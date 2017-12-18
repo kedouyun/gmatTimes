@@ -18,7 +18,7 @@ import com.app.sys.entity.SysUser;
 
 /**
  * @author heguoliang
- * @Description: TODO(Controller公共组件)
+ * @Description: TODO(Controller公共组件) 
  * @date 2017-6-23 15:07
  */
 public abstract class AbstractController {

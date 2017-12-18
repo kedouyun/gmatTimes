@@ -1,0 +1,11 @@
+<script type="text/javascript" src="../public/js/jquery.js"></script>
+<script type="text/javascript" src="../public/fancybox/jquery.fancybox-1.3.1.pack.js"></script>
+<script type="text/javascript" src="../public/js/jquery.validate.js"></script>
+<script type="text/javascript" src="../public/alert/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="../public/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="../public/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="../public/kindeditor/kindeditor-min.js"></script>
+<script type="text/javascript" src="../public/kindeditor/lang/zh_CN.js" charset="utf-8"></script>
+<script type="text/javascript" src="../public/upload/webuploader.min.js"></script>
+<script type="text/javascript" src="../public/js/common.js"></script>
+<script type="text/javascript" src="../public/js/ckform.js"></script>

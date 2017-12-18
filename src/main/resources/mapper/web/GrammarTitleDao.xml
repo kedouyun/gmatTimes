@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.web.dao.GrammarTitleDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.app.web.entity.GrammarTitle" id="grammarTitleMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="grammarTypesId" column="grammar_types_id"/>
+        <result property="gmGrammarTitle" column="gm_grammar_title"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.app.web.entity.GrammarTitle">
+		select * from gm_grammar_title where id = #{value}
+	</select>
+		<select id="search" resultType="com.app.web.entity.GrammarTitle">
+		select * from gm_grammar_title where grammar_types_id=#{grammarTypesId}
+	</select>
+	<select id="queryByGrammarTypesId" resultType="com.app.web.entity.GrammarTitle">
+		select * from gm_grammar_title where grammar_types_id = #{grammarTypesId}
+	</select>
+	
+	<select id="queryList" resultType="com.app.web.entity.GrammarTitle">
+		select title.*,types.name as grammarTypesName from gm_grammar_title title
+		 left join gm_grammar_types types on types.id=title.grammar_types_id 
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by title.id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from gm_grammar_title 
+	</select>
+	 
+	<insert id="save" parameterType="com.app.web.entity.GrammarTitle" useGeneratedKeys="true" keyProperty="id">
+		insert into gm_grammar_title
+		(
+			`name`, 
+			`grammar_types_id`, 
+			`gm_grammar_title`
+		)
+		values
+		(
+			#{name}, 
+			#{grammarTypesId}, 
+			#{gmGrammarTitle}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.app.web.entity.GrammarTitle">
+		update gm_grammar_title 
+		<set>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="grammarTypesId != null">`grammar_types_id` = #{grammarTypesId}, </if>
+			<if test="gmGrammarTitle != null">`gm_grammar_title` = #{gmGrammarTitle}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from gm_grammar_title where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from gm_grammar_title where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

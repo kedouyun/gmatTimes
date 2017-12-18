@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.web.dao.GrammarTypesDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.app.web.entity.GrammarTypes" id="grammarTypesMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.app.web.entity.GrammarTypes">
+		select * from gm_grammar_types where id = #{value}
+	</select>
+	
+	<select id="search" resultType="com.app.web.entity.GrammarTypes">
+		select * from gm_grammar_types 
+	</select>
+	
+	<select id="queryListAll" resultType="com.app.web.entity.GrammarTypes">
+		select * from gm_grammar_types 
+	</select>
+
+	<select id="queryList" resultType="com.app.web.entity.GrammarTypes">
+		select * from gm_grammar_types
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from gm_grammar_types 
+	</select>
+	 
+	<insert id="save" parameterType="com.app.web.entity.GrammarTypes" useGeneratedKeys="true" keyProperty="id">
+		insert into gm_grammar_types
+		(
+			`name`
+		)
+		values
+		(
+			#{name}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.app.web.entity.GrammarTypes">
+		update gm_grammar_types 
+		<set>
+			<if test="name != null">`name` = #{name}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from gm_grammar_types where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from gm_grammar_types where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

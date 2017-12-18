@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.web.dao.QuestionsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.app.web.entity.Questions" id="questionsMap">
+        <result property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="isVisible" column="is_visible"/>
+        <result property="grammaticalGroupId" column="grammatical_group_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="answer" column="answer"/>
+        <result property="analysis" column="analysis"/>
+        <result property="creator" column="creator"/>
+        <result property="questionType" column="question_type"/>
+        <result property="score" column="score"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.app.web.entity.Questions">
+		select * from gm_questions where id = #{value}
+	</select>
+	<select id="queryList" resultType="com.app.web.entity.Questions">
+		select quest.*,gro.name as groupName,title.`name` grammarTitleName,types.name grammarTypesName from gm_questions quest
+		left join gm_grammar_group gro on gro.id=quest.grammatical_group_id 
+		left join gm_grammar_title title on title.id=gro.grammar_title_id 
+		left join gm_grammar_types types on types.id=title.grammar_types_id
+		<!-- left join gm_exampaper_questions exampaper on exampaper.questions_id=quest.id -->
+       <where>
+       		<if test="grammarTypesId!=null and grammarTypesId != '' "> and types.id= #{grammarTypesId}  </if>
+       		<if test="grammarTitleId !=null and grammarTitleId != '' "> and title.id= #{grammarTitleId} </if>
+       		<if test="grammaticalGroupId !=null and grammaticalGroupId != '' "> and quest.grammatical_group_id= #{grammaticalGroupId} </if>
+      		<!-- <if test="exampaperGroupId!=null and exampaperGroupId != '' "> and (exampaper.exampaper_group_id!=#{exampaperGroupId}||exampaper.questions_id is null)</if> -->
+       </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by quest.${sidx} ${order}
+            </when>
+			<otherwise>
+                order by quest.id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	<select id="queryTotal" resultType="int">
+		select count(*) from gm_questions  quest
+		left join gm_grammar_group gro on gro.id=quest.grammatical_group_id 
+		left join gm_grammar_title title on title.id=gro.grammar_title_id 
+		left join gm_grammar_types types on types.id=title.grammar_types_id
+		<!-- left join gm_exampaper_questions exampaper on exampaper.questions_id=quest.id -->
+		 <where>
+       		<if test="grammarTypesId!=null and grammarTypesId != '' "> and types.id= #{grammarTypesId}  </if>
+       		<if test="grammarTitleId !=null and grammarTitleId != '' "> and title.id= #{grammarTitleId} </if>
+   			<if test="grammaticalGroupId !=null and grammaticalGroupId != '' "> and quest.grammatical_group_id= #{grammaticalGroupId} </if>
+       		<!-- <if test="exampaperGroupId!=null and exampaperGroupId != '' "> and (exampaper.exampaper_group_id!=#{exampaperGroupId}||exampaper.questions_id is null)</if> -->
+       </where>
+	</select>
+	
+	<!-- 练习模拟 -->
+	<select id="queryIDsByGrammarGroupId" resultType="long">
+		select id from gm_questions where grammatical_group_id = #{grammarGroupId}
+	</select>
+	
+	<select id="queryByGrammarGroupId" resultType="com.app.web.entity.Questions">
+		select * from gm_questions where grammatical_group_id = #{grammarGroupId}
+	</select>
+	 
+	<insert id="save" parameterType="com.app.web.entity.Questions" useGeneratedKeys="true" keyProperty="id">
+		insert into gm_questions
+		(
+			`content`, 
+			`is_visible`, 
+			`grammatical_group_id`, 
+			`create_time`, 
+			`answer`, 
+			`analysis`, 
+			`creator`, 
+			`question_type`, 
+			`score`
+		)
+		values
+		(
+			#{content}, 
+			#{isVisible}, 
+			#{grammaticalGroupId}, 
+			now(), 
+			#{answer}, 
+			#{analysis}, 
+			#{creator}, 
+			#{questionType}, 
+			#{score}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.app.web.entity.Questions">
+		update gm_questions 
+		<set>
+			<if test="content != null">`content` = #{content}, </if>
+			<if test="isVisible != null">`is_visible` = #{isVisible}, </if>
+			<if test="grammaticalGroupId != null">`grammatical_group_id` = #{grammaticalGroupId}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="answer != null">`answer` = #{answer}, </if>
+			<if test="analysis != null">`analysis` = #{analysis}, </if>
+			<if test="creator != null">`creator` = #{creator}, </if>
+			<if test="questionType != null">`question_type` = #{questionType}, </if>
+			<if test="score != null">`score` = #{score}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from gm_questions where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from gm_questions where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+
+	<select id="myqueryList" resultType="com.app.web.entity.Questions">
+		select quest.*, exampaper.id exampaperQuestionsId , gro.name as groupName,title.`name` grammarTitleName,types.name grammarTypesName from gm_questions quest
+		left join gm_grammar_group gro on gro.id=quest.grammatical_group_id 
+		left join gm_grammar_title title on title.id=gro.grammar_title_id 
+		left join gm_grammar_types types on types.id=title.grammar_types_id
+		left join gm_exampaper_questions exampaper on exampaper.questions_id=quest.id 
+       <where>
+       		<if test="grammarTypesId!=null and grammarTypesId != '' "> and types.id= #{grammarTypesId}  </if>
+       		<if test="grammarTitleId !=null and grammarTitleId != '' "> and title.id= #{grammarTitleId} </if>
+       		<if test="grammaticalGroupId !=null and grammaticalGroupId != '' "> and quest.grammatical_group_id= #{grammaticalGroupId} </if>
+      		<if test="exampaperGroupId!=null and exampaperGroupId != '' "> and exampaper.exampaper_group_id=#{exampaperGroupId}</if>
+       </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by quest.${sidx} ${order}
+            </when>
+			<otherwise>
+                order by quest.id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	
+		<select id="myqueryTotal" resultType="int">
+		select count(*) from gm_questions  quest
+		left join gm_grammar_group gro on gro.id=quest.grammatical_group_id 
+		left join gm_grammar_title title on title.id=gro.grammar_title_id 
+		left join gm_grammar_types types on types.id=title.grammar_types_id
+		left join gm_exampaper_questions exampaper on exampaper.questions_id=quest.id
+		 <where>
+       		<if test="grammarTypesId!=null and grammarTypesId != '' "> and types.id= #{grammarTypesId}  </if>
+       		<if test="grammarTitleId !=null and grammarTitleId != '' "> and title.id= #{grammarTitleId} </if>
+   			<if test="grammaticalGroupId !=null and grammaticalGroupId != '' "> and quest.grammatical_group_id= #{grammaticalGroupId} </if>
+       		<if test="exampaperGroupId!=null and exampaperGroupId != '' "> and exampaper.exampaper_group_id=#{exampaperGroupId}</if>
+       </where>
+	</select>
+	
+	
+</mapper>

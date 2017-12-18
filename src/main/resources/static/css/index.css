@@ -1,0 +1,2361 @@
+@charset "UTF-8";.s-begin-container {
+    margin-top: 10px;
+    font-family: "微软雅黑"
+}
+
+.s-begin-container ::selection {
+    background: 0 0
+}
+
+.s-begin-title {
+    font-size: 16px;
+    line-height: 36px;
+    border-bottom: 1px solid #e6e6e6
+}
+
+.s-begin-tips {
+    font-size: 12px
+}
+
+.s-begin-statistics {
+    padding-top: 25px;
+    border-bottom: 1px solid #e6e6e6
+}
+
+.s-begin-statistics ul {
+    overflow: hidden
+}
+
+.s-begin-statistics li {
+    width: 16.6%;
+    float: left;
+    text-align: center
+}
+
+.s-statistics-title-list {
+    font-size: 14px
+}
+
+.s-statistics-content-list {
+    margin-top: 20px;
+    margin-bottom: 26px
+}
+
+.s-statistics-content-list li {
+    font-size: 18px;
+    font-weight: 700
+}
+
+.s-statistics-content-list span {
+    font-size: 12px
+}
+
+.s-begin-container .s-options-container {
+    width: 190px;
+    margin: 0 auto;
+    margin-top: 80px
+}
+
+.s-begin-container .s-options-container .s-options-list {
+    padding-left: 18px
+}
+
+.s-begin-container .s-options-container label {
+    display: block
+}
+
+.s-begin-container .s-options-outtime {
+    padding-left: 36px;
+    display: none
+}
+
+.s-begin-container .s-options-outtime input,.s-options-outtime span {
+    vertical-align: middle
+}
+
+.s-begin-container .s-options-list li {
+    height: 30px
+}
+
+.s-begin-container .s-options-list li input {
+    vertical-align: middle
+}
+
+.s-begin-container .s-options-list li span {
+    line-height: 30px;
+    vertical-align: middle
+}
+
+.s-begin-container .s-options-container .s-submit {
+    width: 164px;
+    height: 44px;
+    font-size: 16px;
+    line-height: 44px;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+    background: #4d91ff;
+    border: none;
+    cursor: pointer;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: block
+}
+
+.mt12 {
+    margin-top: 12px!important
+}
+
+.mt20 {
+    margin-top: 20px!important
+}
+
+.clearfloat {
+    clear: both
+}
+
+.s-gmat-main {
+    max-width: 1024px;
+    min-width: 1000px;
+    width: 100%;
+    max-height: 768px;
+    height: 100%;
+    background: #006eae;
+    position: relative;
+    margin: 0 auto;
+    visibility: hidden
+}
+
+.s-gmat-main i {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center center
+}
+
+.s-gmat-main .s-gmat-logo {
+    width: 162px;
+    height: 48px;
+    position: absolute;
+    top: -56px;
+    left: 0;
+    background: url(/dist/newgmat/css/img/exercises/kmf-logo.png) center center no-repeat
+}
+
+.s-gmat-header {
+    width: 100%;
+    height: 45px;
+    color: #fff
+}
+
+.s-header-left {
+    font-size: 18px;
+    line-height: 45px;
+    float: left;
+    padding-left: 8px;
+    font-family: Tahoma,Geneva,sans-serif,"微软雅黑";
+    font-weight: 700
+}
+
+.s-header-right {
+    float: right;
+    padding-right: 20px
+}
+
+.s-header-right p {
+    height: 18px;
+    margin-top: 2px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    float: right;
+    clear: both
+}
+
+.s-header-right p:hover {
+    color: #fefe01
+}
+
+.s-header-right p:active {
+    border: 1px solid #fff
+}
+
+.s-header-right p span {
+    height: 18px;
+    line-height: 18px;
+    font-size: 14px;
+    font-weight: 700;
+    float: left;
+    margin-left: 6px
+}
+
+.s-header-right p i {
+    width: 20px;
+    height: 16px;
+    float: left;
+    border: 1px solid transparent
+}
+
+.s-header-right .s-time i {
+    background-image: url(/dist/newgmat/css/img/exercises/clock.png)
+}
+
+.s-header-right .s-time:hover i {
+    background-image: url(/dist/newgmat/css/img/exercises/clock-hover.png)
+}
+
+.s-header-right .s-time.timeout {
+    color: #d42c2f
+}
+
+.s-header-right .s-time.timeout i {
+    background-image: url(/dist/newgmat/css/img/exercises/clock-out.png)
+}
+
+.s-header-right .s-location i {
+    background-image: url(/dist/newgmat/css/img/exercises/location.png)
+}
+
+.s-header-right .s-location:hover i {
+    background-image: url(/dist/newgmat/css/img/exercises/location-hover.png)
+}
+
+.s-top-bar {
+    height: 31px;
+    background: #7eafe1;
+    border: 2px solid #fff;
+    border-left: none;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    right: 20px
+}
+
+.s-top-bar .s-collect-setting {
+    float: right;
+    line-height: 30px;
+    padding-right: 12px;
+    position: relative
+}
+
+.s-top-bar .s-collect-setting p {
+    float: left;
+    cursor: pointer
+}
+
+.s-top-bar .s-collect-setting p.active {
+    color: #fefe01
+}
+
+.s-top-bar .s-collect-setting p.disable {
+    color: #fff;
+    cursor: default
+}
+
+.s-top-bar .s-collect-setting span {
+    float: left;
+    font-family: "微软雅黑"
+}
+
+.s-remove-wrong-dialog-container {
+    position: absolute;
+    left: -82px;
+    top: 34px;
+    width: 240px;
+    padding: 34px 16px 30px;
+    background: #006eae;
+    color: #fff;
+    z-index: 2;
+    text-align: center;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    display: none
+}
+
+.s-top-bar .s-remove-wrong-dialog-container .s-remove-wrong-msg {
+    float: none
+}
+
+.s-top-bar .s-remove-wrong-dialog-container .s-remove-wrong-btn-cont {
+    overflow: hidden;
+    text-align: center;
+    margin-top: 18px
+}
+
+.s-top-bar .s-remove-wrong-dialog-container .s-remove-wrong-btn-cont span {
+    display: inline-block;
+    float: none;
+    cursor: pointer
+}
+
+.s-remove-wrong-dialog-container .s-remove-wrong-btn-cont span.s-enter-btn {
+    width: 72px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #fff;
+    margin-right: 12px
+}
+
+.s-remove-wrong-dialog-container .s-remove-wrong-btn-cont span.s-enter-btn:hover {
+    border: 1px solid #fefe01;
+    color: #fefe01
+}
+
+.s-top-bar i {
+    width: 20px;
+    height: 30px;
+    float: left;
+    margin-right: 6px
+}
+
+.s-top-bar .s-collect,.s-top-bar .s-correction,.s-top-bar .s-remove {
+    margin-right: 20px
+}
+
+.s-top-bar .s-collect:hover,.s-top-bar .s-correction:hover,.s-top-bar .s-remove:hover,.s-top-bar .s-setting:hover {
+    color: #fefe01
+}
+
+.s-top-bar .s-collect.exam-collect {
+    margin-right: 0
+}
+
+.s-top-bar .s-correction i {
+    background: url(/dist/newgmat/css/img/exercises/correction.png) 4px 7px no-repeat
+}
+
+.s-top-bar .s-correction:hover i {
+    background: url(/dist/newgmat/css/img/exercises/correction.png) -16px 7px no-repeat
+}
+
+.s-top-bar .s-remove i {
+    background: url(/dist/newgmat/css/img/wrong_topic/remove-icons.png) 2px 7px no-repeat
+}
+
+.s-top-bar .s-remove.active i,.s-top-bar .s-remove:hover i {
+    background: url(/dist/newgmat/css/img/wrong_topic/remove-icons.png) -23px 7px no-repeat
+}
+
+.s-top-bar .s-collect i {
+    background: url(/dist/newgmat/css/img/exercises/collect-icons.png?20170104) 2px 6px no-repeat
+}
+
+.s-top-bar .s-collect:hover i {
+    background: url(/dist/newgmat/css/img/exercises/collect-icons.png?20170104) -62px 6px no-repeat
+}
+
+.s-top-bar .s-collect.active i {
+    background: url(/dist/newgmat/css/img/exercises/collect-icons.png?20170104) -19px 6px no-repeat
+}
+
+.s-top-bar .s-collect.disable i {
+    background: url(/dist/newgmat/css/img/exercises/collect-icons.png?20170104) -41px 6px no-repeat
+}
+
+.s-top-bar .s-setting i {
+    background-image: url(/dist/newgmat/css/img/exercises/setting.png)
+}
+
+.s-top-bar .s-setting:hover i {
+    background-image: url(/dist/newgmat/css/img/exercises/setting-active.png)
+}
+
+.s-container,.s-thesis-container {
+    padding: 0 24px;
+    background: #fff;
+    overflow-x: auto;
+    overflow-y: auto;
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 80px;
+    bottom: 38px
+}
+
+.s-content-wrap {
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+
+.s-left-box {
+    width: 0;
+    height: 100%;
+    float: left;
+    position: relative;
+    overflow: hidden
+}
+
+.s-left-box-overy {
+    overflow-y: auto
+}
+
+.s-left-box-con {
+    padding-right: 24px;
+    font-size: 14px;
+    font-family: "Microsoft YaHei"
+}
+
+.s-right-box-con {
+    padding-left: 15px
+}
+
+.s-right-box {
+    width: 100%;
+    height: 100%;
+    float: left
+}
+
+.s-left-box,.s-right-box {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.s-middle-line {
+    width: 15px;
+    height: 100%;
+    position: absolute;
+    left: -24px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.s-middle-line span {
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    background-color: #bbb
+}
+
+.s-left-split {
+    margin: 0 2px 0 4px
+}
+
+.s-right-split {
+    margin: 0 4px 0 2px
+}
+
+.s-mask {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    position: absolute;
+    left: 15px;
+    top: 0
+}
+
+.s-image-container {
+    width: 390px;
+    height: 56px;
+    background: url(../../../images/mask.png) no-repeat;
+    position: absolute;
+    top: 46%;
+    left: 23px
+}
+
+.s-container .s-result-icon,.s-container .s-table-result-icon {
+    width: 21px;
+    height: 21px;
+    display: none;
+    vertical-align: middle
+}
+
+.s-container.writing {
+    padding: 0;
+    overflow: hidden
+}
+
+.s-container b {
+    font-weight: 700
+}
+
+.s-container em {
+    font-style: italic
+}
+
+.s-container u {
+    text-decoration: underline
+}
+
+.s-sc-topic-container {
+    margin-bottom: 20px
+}
+
+.s-answer-tips,.s-sc-answoers-list {
+    margin-top: 20px
+}
+
+.s-container .s-sc-topic-options {
+    margin-top: 16px;
+    margin-left: 20px;
+    display: block
+}
+
+.s-container .s-sc-answoers-list li {
+    position: relative;
+    padding-left: 32px;
+    line-height: 24px;
+    margin-bottom: 12px
+}
+
+#questionForm.show-answer .s-container .s-sc-answoers-list li.wrong {
+    color: #e56161
+}
+
+#questionForm.show-answer .s-container .s-sc-answoers-list li.right {
+    color: #6dcb66
+}
+
+#questionForm.show-answer .s-container .s-sc-answoers-list li .s-result-icon {
+    margin-left: 8px
+}
+
+#questionForm.show-answer .s-container .s-sc-answoers-list li.wrong .s-result-icon {
+    display: inline-block;
+    background: url(/dist/newgmat/css/img/exercises/wrong.png) center center no-repeat;
+    background-size: 14px!important
+}
+
+#questionForm.show-answer .s-container .s-sc-answoers-list li.right .s-result-icon {
+    display: inline-block;
+    background: url(/dist/newgmat/css/img/exercises/right.png) center center no-repeat;
+    background-size: 18px!important
+}
+
+.s-container .s-sc-answoers-list li i.inputRadio {
+    position: absolute;
+    left: 0;
+    top: 7px
+}
+
+.s-container .s-sc-answoers-list input {
+    margin-right: 14px
+}
+
+.s-sc-underline {
+    text-decoration: underline
+}
+
+.s-sc-img-container {
+    text-align: center;
+    margin-bottom: 12px;
+    line-height: 0
+}
+
+.s-sc-img-container img {
+    margin: 16px auto;
+    padding: 0
+}
+
+.s-sc-topic {
+    padding-top: 16px
+}
+
+.s-sc-topic-p {
+    padding-top: 16px;
+    margin-bottom: 12px;
+    line-height: 24px
+}
+
+.s-sc-table-full,.s-sc-table-min {
+    border: 1px solid #000
+}
+
+.s-sc-table-full.no-boder {
+    border: none
+}
+
+.s-sc-table-full td {
+    border-right: 1px solid #000;
+    padding: 2px 4px
+}
+
+.s-ir-answer-table.show-answer td,.s-sc-table-full.show-answer td {
+    position: relative
+}
+
+.s-ir-answer-table.show-answer td .s-result-icon,.s-sc-table-full.show-answer td .s-result-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -11px;
+    display: block
+}
+
+.s-ir-answer-table.show-answer td.wrong .s-result-icon,.s-sc-table-full.show-answer td.wrong .s-result-icon {
+    background: url(/dist/newgmat/css/img/exercises/wrong.png) center center no-repeat;
+    background-size: 18px!important
+}
+
+.s-ir-answer-table.show-answer td.right .s-result-icon,.s-sc-table-full.show-answer td.right .s-result-icon {
+    background: url(/dist/newgmat/css/img/exercises/right.png) center center no-repeat
+}
+
+.s-sc-table-full.show-answer td .s-table-result-icon {
+    top: 50%;
+    margin-top: -10px;
+    margin-left: 4px;
+    position: absolute;
+    display: inline-block
+}
+
+.s-sc-table-full.show-answer td.wrong .s-table-result-icon {
+    background: url(/dist/newgmat/css/img/exercises/wrong.png) center center no-repeat;
+    background-size: 14px!important
+}
+
+.s-sc-table-full.show-answer td.right .s-table-result-icon {
+    background: url(/dist/newgmat/css/img/exercises/right.png) center center no-repeat;
+    background-size: 18px!important
+}
+
+.s-sc-table-full.no-boder td {
+    border: none
+}
+
+.s-sc-table-full thead td,.s-sc-table-min thead td {
+    border-bottom: 1px solid #000
+}
+
+.s-sc-table-full.no-boder thead td {
+    border: none
+}
+
+.s-sc-table-min {
+    float: left
+}
+
+.s-sc-table-min td {
+    border-right: 1px solid #000;
+    padding: 4px 12px 4px 8px
+}
+
+.s-ir-left-container {
+    float: left;
+    width: 46%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding-right: 24px
+}
+
+.s-ir-vertical-bar {
+    float: left;
+    width: 2%;
+    height: 100%;
+    background: #006eae
+}
+
+.s-ir-right-container {
+    float: right;
+    width: 46%;
+    height: 100%;
+    overflow-y: auto;
+    padding-left: 24px
+}
+
+.s-ir-tab-list {
+    overflow: hidden;
+    border-bottom: 1px solid #9a9a9a;
+    margin-bottom: 16px;
+    margin-top: 18px
+}
+
+.s-ir-tab-list li {
+    float: left;
+    padding: 0 6px;
+    margin-right: 2px;
+    border: 1px solid #000;
+    border-bottom: none;
+    border-radius: 8px 0 0;
+    background: #b4b4b4;
+    color: #3a84ba;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer
+}
+
+.s-ir-tab-list li.active {
+    background: #fff
+}
+
+.s-ir-ctrl-container li {
+    display: none
+}
+
+.s-ir-ctrl-container li.active {
+    display: block
+}
+
+.s-ir-ctrl-container .s-ir-topic {
+    text-indent: 1em;
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 8px
+}
+
+.s-ir-ctrl-container .s-ir-topic strong {
+    font-weight: 700
+}
+
+.s-ir-question-container {
+    margin-top: 18px;
+    margin-bottom: 20px
+}
+
+.s-ir-question-container .s-ir-question {
+    line-height: 24px;
+    font-size: 16px
+}
+
+.s-ir-answer-table {
+    margin-top: 20px
+}
+
+.s-ir-answer-table tr {
+    border-bottom: 12px solid transparent
+}
+
+.s-ir-answer-table-boder td {
+    padding: 2px 4px
+}
+
+.s-ir-select {
+    border: 1px solid #000;
+    border-radius: 4px
+}
+
+.s-ir-topic-container {
+    margin: 16px 0
+}
+
+.s-ir-left-question-container {
+    float: left;
+    width: 50%
+}
+
+.s-ir-right-answer-container {
+    float: right;
+    width: 46%
+}
+
+.s-ir-left-question-container .s-ir-img-container {
+    width: 468px;
+    height: 400px;
+    background: #bdbdbd;
+    margin-top: 4px
+}
+
+.s-ir-right-answer-container .s-ir-question-container {
+    margin-top: 6px
+}
+
+.s-ir-top-topic-container .s-ir-top-left-img-container {
+    width: 448px;
+    height: 320px;
+    float: left;
+    background: #e7e7e7;
+    margin-right: 26px
+}
+
+.s-ir-top-right-parg {
+    width: 48%;
+    float: right;
+    line-height: 24px;
+    font-size: 14px
+}
+
+.s-ir-bottom-answer {
+    margin-top: 60px
+}
+
+.s-ir-bottom-answer .s-ir-btm-answer {
+    line-height: 24px;
+    margin-bottom: 12px
+}
+
+.s-ir-answer-select {
+    border-radius: 4px;
+    border: 1px solid #000
+}
+
+.s-rc-topic {
+    margin-top: 18px;
+    line-height: 24px
+}
+
+.s-container .s-answers-results {
+    margin-top: 32px;
+    padding-bottom: 20px;
+    display: none
+}
+
+.s-container .s-answers-results .s-answers-title {
+    font-size: 16px;
+    color: #6dcb66;
+    margin-bottom: 14px;
+    font-family: "微软雅黑"
+}
+
+.s-container .s-resulets {
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 14px;
+    font-family: "微软雅黑"
+}
+
+.s-container .s-results-tips {
+    color: #666;
+    font-family: "微软雅黑";
+    font-size: 12px
+}
+
+.s-container .s-results-tips a {
+    color: #4c91ff
+}
+
+.s-thesis-topic-container {
+    height: 40%;
+    padding: 0 24px;
+    overflow-y: auto
+}
+
+.s-thesis-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 32px;
+    text-align: center
+}
+
+.s-thesis-p {
+    margin-top: 20px;
+    line-height: 24px
+}
+
+.s-thesis-line-between {
+    height: 4%;
+    background: #006eae
+}
+
+.s-thesis-container {
+    padding: 0;
+    overflow: hidden
+}
+
+.s-thesis-textarea-container {
+    height: 56%;
+    border: 2px solid #fff;
+    border-bottom: none;
+    box-sizing: border-box
+}
+
+.s-thesis-toolbar {
+    height: 37px;
+    background: #7eafe1;
+    overflow: hidden;
+    padding-left: 10px
+}
+
+.s-thesis-toolbar ::selection {
+    background-color: transparent
+}
+
+.s-thesis-toolbar li {
+    float: left;
+    line-height: 37px;
+    margin-right: 30px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer
+}
+
+.s-thesis-toolbar li:hover {
+    color: #fefe01
+}
+
+.s-thesis-toolbar li.disable {
+    color: #404040;
+    cursor: default
+}
+
+.s-thesis-toolbar li i {
+    float: left;
+    width: 18px;
+    height: 37px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-right: 6px
+}
+
+.s-thesis-toolbar li p {
+    float: left
+}
+
+.s-thesis-toolbar li p span {
+    text-decoration: underline
+}
+
+.s-thesis-toolbar i.s-cut {
+    background-image: url(/dist/newgmat/css/img/exercises/cut.png)
+}
+
+.s-thesis-toolbar li:hover i.s-cut {
+    background-image: url(/dist/newgmat/css/img/exercises/cut-hover.png)
+}
+
+.s-thesis-toolbar i.s-copy {
+    background-image: url(/dist/newgmat/css/img/exercises/copy.png)
+}
+
+.s-thesis-toolbar li:hover i.s-copy {
+    background-image: url(/dist/newgmat/css/img/exercises/copy-hover.png)
+}
+
+.s-thesis-toolbar i.s-paste {
+    background-image: url(/dist/newgmat/css/img/exercises/paste.png)
+}
+
+.s-thesis-toolbar li:hover i.s-paste {
+    background-image: url(/dist/newgmat/css/img/exercises/paste-hover.png)
+}
+
+.s-thesis-toolbar i.s-undo {
+    background-image: url(/dist/newgmat/css/img/exercises/undo.png)
+}
+
+.s-thesis-toolbar li:hover i.s-undo {
+    background-image: url(/dist/newgmat/css/img/exercises/undo-hover.png)
+}
+
+.s-thesis-toolbar li.disable i.s-undo {
+    background-image: url(/dist/newgmat/css/img/exercises/undo-disable.png)
+}
+
+.s-thesis-toolbar i.s-redo {
+    background-image: url(/dist/newgmat/css/img/exercises/redo.png)
+}
+
+.s-thesis-toolbar li:hover i.s-redo {
+    background-image: url(/dist/newgmat/css/img/exercises/redo-hover.png)
+}
+
+.s-thesis-toolbar li.disable i.s-redo {
+    background-image: url(/dist/newgmat/css/img/exercises/redo-disable.png)
+}
+
+.s-thesis-textarea {
+    padding: 2px;
+    width: 100%;
+    border: none;
+    height: calc(100% - 37px);
+    box-sizing: border-box;
+    line-height: 24px
+}
+
+.s-bottom-bar {
+    height: 36px;
+    border: 2px solid #fff;
+    border-bottom: none;
+    border-right: none;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 0
+}
+
+.s-bottom-bar i {
+    height: 26px;
+    float: left
+}
+
+.s-bottom-bar p {
+    height: 26px;
+    line-height: 26px;
+    float: left;
+    color: #fff;
+    font-size: 18px
+}
+
+.s-bottom-bar p span {
+    text-decoration: underline
+}
+
+.s-bottom-bar .s-end-cont,.s-bottom-bar .s-help-cont,.s-bottom-bar .s-pause-cont,.s-bottom-bar .s-quit-cont {
+    width: 80px;
+    height: 36px;
+    border-right: 2px solid #fff;
+    float: left;
+    cursor: pointer
+}
+
+.s-bottom-bar .s-end-cont {
+    width: 125px;
+    cursor: pointer
+}
+
+.s-bottom-bar .s-pause-cont {
+    width: 130px;
+    cursor: pointer
+}
+
+.s-bottom-bar .s-pause-cont.paused {
+    position: relative;
+    z-index: 999
+}
+
+.s-bottom-bar .s-pause-cont.practice {
+    width: 90px;
+    z-index: 999;
+    position: relative
+}
+
+.s-bottom-bar .s-pause-cont.practice .s-pause {
+    width: 66px;
+    text-align: center;
+    padding: 0
+}
+
+.s-bottom-bar .s-pause-cont .s-pause p {
+    float: inherit
+}
+
+.s-bottom-bar .s-end-exam,.s-bottom-bar .s-help,.s-bottom-bar .s-pause,.s-bottom-bar .s-quit {
+    width: 64px;
+    height: 26px;
+    padding-left: 4px;
+    padding-right: 2px;
+    margin: 0 auto;
+    margin-top: 5px;
+    border: 1px solid transparent;
+    cursor: pointer
+}
+
+.s-bottom-bar .s-end-cont .s-end-exam {
+    width: 110px
+}
+
+.s-bottom-bar .s-pause-cont .s-pause {
+    width: 120px;
+    text-align: center;
+    padding: 0
+}
+
+.s-bottom-bar .s-pause-cont .s-pause.paused {
+    position: relative;
+    z-index: 999
+}
+
+.s-bottom-bar .s-end-cont:hover p,.s-bottom-bar .s-help-cont:hover p,.s-bottom-bar .s-next-cont:hover p,.s-bottom-bar .s-pause-cont:hover p,.s-bottom-bar .s-quit-cont:hover p,.s-bottom-bar .s-skip-cont:hover p {
+    color: #fefe01
+}
+
+.s-bottom-bar .s-end-cont.disabled p,.s-bottom-bar .s-help-cont.disabled p,.s-bottom-bar .s-next-cont.disabled p,.s-bottom-bar .s-pause-cont.disabled p,.s-bottom-bar .s-quit-cont.disabled p,.s-bottom-bar .s-skip-cont.disabled p {
+    color: #000
+}
+
+.s-bottom-bar .s-end-exam:active,.s-bottom-bar .s-help:active,.s-bottom-bar .s-pause:active,.s-bottom-bar .s-quit:active {
+    border: 1px solid #fff
+}
+
+.s-bottom-bar .s-end-exam i,.s-bottom-bar .s-help i,.s-bottom-bar .s-quit i {
+    width: 20px;
+    margin-right: 6px
+}
+
+.s-bottom-bar .s-help i {
+    background-image: url(/dist/newgmat/css/img/exercises/help.png)
+}
+
+.s-bottom-bar .s-help-cont:hover i {
+    background-image: url(/dist/newgmat/css/img/exercises/help-hover.png)
+}
+
+.s-bottom-bar .s-help-cont.disabled i,.s-bottom-bar .s-help-cont.disabled:hover i {
+    background-image: url(/dist/newgmat/css/img/exercises/help-disabled.png)
+}
+
+.s-bottom-bar .s-end-cont i,.s-bottom-bar .s-quit-cont i {
+    background-image: url(/dist/newgmat/css/img/exercises/quit.png)
+}
+
+.s-bottom-bar .s-end-cont:hover i,.s-bottom-bar .s-quit-cont:hover i {
+    background-image: url(/dist/newgmat/css/img/exercises/quit-hover.png)
+}
+
+.s-bottom-bar .s-end-cont.disabled i,.s-bottom-bar .s-end-cont.disabled:hover i,.s-bottom-bar .s-quit-cont.disabled i,.s-bottom-bar .s-quit-cont.disabled:hover i {
+    background-image: url(/dist/newgmat/css/img/exercises/quit-disabled.png)
+}
+
+.s-bottom-bar .s-next-cont,.s-bottom-bar .s-skip-cont {
+    width: 80px;
+    height: 36px;
+    float: right;
+    border-left: 2px solid #fff;
+    cursor: pointer
+}
+
+.s-bottom-bar .s-next-cont .s-next,.s-bottom-bar .s-skip-cont .s-skip {
+    width: 60px;
+    height: 26px;
+    border: 1px solid transparent;
+    margin: 0 auto;
+    padding-left: 4px;
+    margin-top: 5px;
+    cursor: pointer
+}
+
+.s-bottom-bar .s-skip-cont {
+    width: 120px
+}
+
+.s-bottom-bar .s-skip-cont .s-skip {
+    width: 80px;
+    padding: 0;
+    text-align: center
+}
+
+.s-bottom-bar .s-skip-cont .s-skip p {
+    font-size: 16px;
+    width: 100%;
+    font-family: "微软雅黑"
+}
+
+.s-bottom-bar .s-next-cont .s-next:active,.s-bottom-bar .s-skip-cont .s-skip:active {
+    border: 1px solid #fff
+}
+
+.s-bottom-bar .s-next-cont i {
+    width: 16px;
+    margin-left: 6px;
+    background-image: url(/dist/newgmat/css/img/exercises/next.png)
+}
+
+.s-bottom-bar .s-next-cont:hover i {
+    background-image: url(/dist/newgmat/css/img/exercises/next-hover.png)
+}
+
+.s-bottom-bar .s-next-cont.disabled i,.s-bottom-bar .s-next-cont.disabled:hover i {
+    background-image: url(/dist/newgmat/css/img/exercises/next-disabled.png)
+}
+
+.s-mask-layer {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 998;
+    display: none
+}
+
+.s-container .s-pause-layer {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: #fff;
+    cursor: default;
+    z-index: 9999
+}
+
+.s-container .s-pause-layer p {
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    transform: translateX(-50%) translateY(-50%)
+}
+
+.s-container input[type=checkbox],.s-container input[type=radio],.s-container select,.s-setting-dialog input {
+    /* display: none; */
+}
+
+.s-sc-answoers-list i.inputRadio {
+    margin-right: 16px
+}
+
+.js-formSelect.show-answer.wrong {
+    border-color: #e56161
+}
+
+.js-formSelect.show-answer li.wrong,.js-formSelect.show-answer li.wrong:hover {
+    color: #e56161;
+    background: url(/dist/newgmat/css/img/exercises/wrong.png) right center no-repeat!important;
+    background-size: 14px!important
+}
+
+.js-formSelect.show-answer.right {
+    border-color: #6dcb66
+}
+
+.js-formSelect.show-answer li.right,.js-formSelect.show-answer li.right:hover {
+    color: #6dcb66;
+    background: url(/dist/newgmat/css/img/exercises/right.png) right center no-repeat!important;
+    background-size: 14px!important
+}
+
+#MathJax_Message {
+    display: none!important
+}
+
+.s-alert-dialog {
+    width: 344px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -177px;
+    margin-top: -77px;
+    z-index: 999;
+    background: #006eae;
+    color: #fff;
+    padding-bottom: 27px;
+    border: 1px solid #fff;
+    display: none
+}
+
+.s-alert-dialog .s-alert-title {
+    height: 39px;
+    padding: 0 14px;
+    line-height: 39px;
+    overflow: hidden;
+    border-bottom: 1px solid #fff
+}
+
+.s-alert-dialog .s-alert-title span {
+    float: left
+}
+
+.s-alert-dialog .s-alert-title .s-close {
+    width: 16px;
+    height: 39px;
+    float: right;
+    background: url(/dist/newgmat/css/img/exercises/close.png) center center no-repeat;
+    cursor: pointer
+}
+
+.s-alert-dialog .s-dialog-msg {
+    padding: 0 14px;
+    text-align: center;
+    margin-top: 20px
+}
+
+.s-alert-dialog .s-button-container {
+    width: 54px;
+    height: 22px;
+    border: 1px solid #fff;
+    padding: 2px;
+    cursor: pointer;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 30px
+}
+
+.s-alert-dialog .s-button-container:hover {
+    color: #fefe01
+}
+
+.s-alert-dialog .s-button-container:active {
+    background: #999;
+    color: #fff
+}
+
+.s-alert-dialog .s-button-container:active .s-enter-btn {
+    border: 1px solid #999
+}
+
+.s-alert-dialog .s-button-container .s-enter-btn {
+    width: 52px;
+    height: 20px;
+    border: 1px solid #fff;
+    line-height: 20px
+}
+
+.s-alert-dialog .s-button-container .s-enter-btn span {
+    text-decoration: underline
+}
+
+.s-confirm-dialog {
+    width: 504px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -252px;
+    margin-top: -77px;
+    z-index: 999;
+    background: #006eae;
+    color: #fff;
+    padding-bottom: 27px;
+    border: 1px solid #fff;
+    display: none
+}
+
+.s-confirm-title {
+    height: 39px;
+    padding: 0 14px;
+    line-height: 39px;
+    overflow: hidden;
+    border-bottom: 1px solid #fff
+}
+
+.s-confirm-title span {
+    float: left
+}
+
+.s-confirm-title .s-close {
+    width: 16px;
+    height: 39px;
+    float: right;
+    background: url(/dist/newgmat/css/img/exercises/close.png) center center no-repeat;
+    cursor: pointer
+}
+
+.s-confirm-dialog .s-dialog-msg {
+    text-align: center;
+    margin-top: 20px
+}
+
+.s-confirm-button-container {
+    text-align: center;
+    margin-top: 26px
+}
+
+.s-confirm-dialog .s-buttons {
+    width: 54px;
+    height: 22px;
+    border: 1px solid #fff;
+    padding: 2px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block
+}
+
+.s-confirm-dialog .s-buttons:hover {
+    color: #fefe01
+}
+
+.s-confirm-dialog .s-buttons:active {
+    background: #999;
+    color: #fff
+}
+
+.s-confirm-dialog .s-buttons.active:active .s-enter-btn {
+    border: 1px solid #999
+}
+
+.s-confirm-dialog .s-buttons .s-enter-btn {
+    width: 52px;
+    height: 20px;
+    border: 1px solid transparent;
+    line-height: 20px
+}
+
+.s-confirm-dialog .s-buttons.active .s-enter-btn {
+    border: 1px solid #fff
+}
+
+.s-confirm-dialog .s-buttons .s-enter-btn span {
+    text-decoration: underline
+}
+
+.s-help-dialog {
+    width: 622px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -311px;
+    margin-top: -209px;
+    z-index: 999;
+    background: #006eae;
+    color: #fff;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    padding-bottom: 16px;
+    border: 1px solid #fff;
+    display: none
+}
+
+.s-help-dialog i {
+    display: inline-block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    vertical-align: middle
+}
+
+.s-help-title {
+    height: 39px;
+    line-height: 39px;
+    padding: 0 16px;
+    border-bottom: 1px solid #fff
+}
+
+.s-help-title p {
+    float: left;
+    font-size: 18px;
+    vertical-align: middle
+}
+
+.s-help-title .s-help {
+    width: 19px;
+    height: 39px;
+    margin-right: 6px;
+    background-image: url(/dist/newgmat/css/img/exercises/help.png)
+}
+
+.s-help-title .s-close {
+    float: right;
+    width: 16px;
+    height: 39px;
+    cursor: pointer;
+    background-image: url(/dist/newgmat/css/img/exercises/close.png)
+}
+
+.s-help-msg-container {
+    margin-top: 16px;
+    padding: 0 16px
+}
+
+.s-help-msg-container .s-help-msg-list {
+    padding-left: 18px
+}
+
+.s-help-msg-container .s-help-msg-list li {
+    list-style: disc;
+    line-height: 24px;
+    margin-bottom: 12px
+}
+
+.s-help-msg-container .s-help-msg-list li i {
+    margin: 0 12px;
+    height: 24px
+}
+
+.s-help-msg-list .s-time {
+    width: 17px;
+    background-image: url(/dist/newgmat/css/img/exercises/clock.png)
+}
+
+.s-help-msg-list .s-location {
+    width: 20px;
+    background-image: url(/dist/newgmat/css/img/exercises/location.png)
+}
+
+.s-help-msg-list .s-collect {
+    width: 17px;
+    background-image: url(/dist/newgmat/css/img/exercises/collect.png)
+}
+
+.s-help-msg-list .s-setting {
+    width: 19px;
+    background-image: url(/dist/newgmat/css/img/exercises/setting.png)
+}
+
+.s-help-msg-list .s-next {
+    width: 61px;
+    background-image: url(/dist/newgmat/css/img/exercises/next-pic.png)
+}
+
+.s-help-msg-list .s-quit {
+    width: 61px;
+    background-image: url(/dist/newgmat/css/img/exercises/quit-pic.png)
+}
+
+.s-help-msg-list .s-end {
+    width: 110px;
+    background-image: url(/dist/newgmat/css/img/exercises/end-pic.png)
+}
+
+.s-help-dialog .s-close-button-container {
+    margin-top: 32px;
+    padding: 0 16px;
+    height: 26px;
+    overflow: hidden
+}
+
+.s-help-dialog .s-close-button-container .s-close-button {
+    float: right;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border: 1px solid #fff;
+    padding: 0 4px;
+    cursor: pointer
+}
+
+.s-help-dialog .s-close-button-container .s-close-button:hover {
+    color: #fefe01
+}
+
+.s-help-dialog .s-close-button-container .s-close-button:hover .s-close {
+    background-image: url(/dist/newgmat/css/img/exercises/close-hover.png)
+}
+
+.s-close-button-container .s-close-button .s-close {
+    width: 16px;
+    height: 24px;
+    background-image: url(/dist/newgmat/css/img/exercises/close.png);
+    margin-right: 8px;
+    float: left
+}
+
+.s-close-button-container .s-close-button p {
+    float: left
+}
+
+.s-close-button-container .s-close-button span {
+    text-decoration: underline
+}
+
+.s-end-dialog,.s-quit-dialog {
+    width: 284px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -142px;
+    margin-top: -77px;
+    z-index: 999;
+    background: #006eae;
+    color: #fff;
+    padding-bottom: 24px;
+    border: 1px solid #fff;
+    display: none
+}
+
+.s-end-dialog {
+    width: 440px;
+    margin-left: -220px
+}
+
+.s-quit-title {
+    height: 39px;
+    padding: 0 14px;
+    font-size: 14px;
+    line-height: 39px;
+    overflow: hidden;
+    border-bottom: 1px solid #fff
+}
+
+.s-quit-title span {
+    float: left
+}
+
+.s-quit-title .s-close {
+    width: 16px;
+    height: 39px;
+    float: right;
+    background: url(/dist/newgmat/css/img/exercises/close.png) center center no-repeat;
+    cursor: pointer
+}
+
+.s-quit-dialog .s-dialog-msg {
+    padding: 0 14px;
+    text-align: center;
+    height: 34px;
+    line-height: 34px;
+    margin-top: 10px
+}
+
+.s-end-dialog .s-dialog-msg {
+    margin-top: 16px;
+    margin-left: 16px
+}
+
+.s-end-dialog .s-dialog-msg.margin-left {
+    margin-left: 55px
+}
+
+.s-end-dialog .s-dialog-msg .s-qiut,.s-quit-dialog .s-dialog-msg .s-qiut {
+    width: 34px;
+    height: 34px;
+    background: url(/dist/newgmat/css/img/exercises/warn.png) center center no-repeat;
+    float: left
+}
+
+.s-end-dialog .s-dialog-msg .s-qiut {
+    margin-top: 8px;
+    margin-right: 4px
+}
+
+.s-quit-button-container {
+    text-align: center;
+    margin-top: 18px
+}
+
+.s-end-dialog .s-quit-button-container {
+    margin-top: 24px
+}
+
+.s-end-dialog .s-buttons,.s-quit-dialog .s-buttons {
+    width: 54px;
+    height: 22px;
+    border: 1px solid #fff;
+    padding: 2px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block
+}
+
+.s-end-dialog .s-buttons:hover,.s-quit-dialog .s-buttons:hover {
+    color: #fefe01
+}
+
+.s-end-dialog .s-buttons:active,.s-quit-dialog .s-buttons:active {
+    background: #999;
+    color: #fff
+}
+
+.s-end-dialog .s-buttons.active:active .s-enter-btn,.s-quit-dialog .s-buttons.active:active .s-enter-btn {
+    border: 1px solid #999
+}
+
+.s-end-dialog .s-buttons .s-enter-btn,.s-quit-dialog .s-buttons .s-enter-btn {
+    width: 52px;
+    height: 20px;
+    border: 1px solid transparent;
+    line-height: 20px
+}
+
+.s-end-dialog .s-buttons.active .s-enter-btn,.s-quit-dialog .s-buttons.active .s-enter-btn {
+    border: 1px solid #fff
+}
+
+.s-end-dialog .s-buttons .s-enter-btn span,.s-quit-dialog .s-buttons .s-enter-btn span {
+    text-decoration: underline
+}
+
+.s-setting-dialog {
+    width: 622px;
+    height: 296px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -311px;
+    margin-top: -148px;
+    z-index: 999;
+    background: #006eae;
+    border: 1px solid #fff;
+    color: #fff;
+    font-family: "微软雅黑";
+    display: none
+}
+
+.s-setting-dialog i {
+    display: block;
+    float: left;
+    background-repeat: no-repeat;
+    background-position: center center
+}
+
+.s-setting-dialog .s-title {
+    padding: 0 16px;
+    height: 39px;
+    border-bottom: 1px solid #fff
+}
+
+.s-setting-dialog .s-setting-radio {
+    vertical-align: middle;
+    margin-right: 4px
+}
+
+.s-setting-dialog .s-title .s-title-name {
+    float: left
+}
+
+.s-setting-dialog .s-title .s-title-name i {
+    width: 19px;
+    height: 39px;
+    margin-right: 6px;
+    background-image: url(/dist/newgmat/css/img/exercises/setting.png)
+}
+
+.s-setting-dialog .s-title .s-title-name span {
+    line-height: 39px;
+    font-size: 16px
+}
+
+.s-setting-dialog .s-title .s-close {
+    width: 16px;
+    height: 39px;
+    float: right;
+    background-image: url(/dist/newgmat/css/img/exercises/close.png);
+    cursor: pointer
+}
+
+.s-setting-container {
+    padding: 0 16px
+}
+
+.s-setting-container .s-label-list {
+    margin-top: 16px
+}
+
+.s-setting-container .s-label-list li {
+    height: 24px;
+    margin-bottom: 12px;
+    position: relative
+}
+
+.s-setting-container .s-label-list li p {
+    float: left
+}
+
+.s-setting-container .s-label-list li span {
+    float: left;
+    line-height: 24px;
+    font-size: 14px;
+    margin-right: 17px;
+    cursor: pointer
+}
+
+.s-setting-container .s-label-list li span label {
+    cursor: pointer
+}
+
+.s-setting-container .s-label-list li span:hover {
+    color: #fefe01
+}
+
+.s-setting-container .s-label-list .s-tips-container {
+    position: absolute;
+    top: 30px;
+    left: 299px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 8px;
+    border: 1px solid #fff;
+    display: none
+}
+
+.s-tips-container p {
+    font-size: 14px
+}
+
+.s-setting-container .s-label-list .s-tips-container .s-arrow {
+    position: absolute;
+    top: -9px;
+    left: 20px;
+    width: 11px;
+    height: 9px;
+    background-image: url(/dist/newgmat/css/img/exercises/arrow.png)
+}
+
+.s-setting-dialog .s-button-container {
+    margin-top: 58px;
+    text-align: center
+}
+
+.s-setting-dialog .s-button-container span {
+    cursor: pointer;
+    height: 26px;
+    line-height: 26px;
+    display: inline-block
+}
+
+.s-setting-dialog .s-button-container span:hover {
+    color: #fefe01
+}
+
+.s-setting-dialog .s-button-container .s-enter-btn {
+    width: 72px;
+    height: 24px;
+    line-height: 24px;
+    border: 1px solid #fff;
+    margin-right: 12px
+}
+
+.s-setting-dialog .s-button-container .s-enter-btn:hover {
+    border: 1px solid #fefe01
+}
+
+.s-setting-dialog i.inputRadio,.s-setting-dialog i.inputRadio:hover {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 4px;
+    margin-right: 4px;
+    background: url(/dist/newgmat/css/img/form/form-icons.png) -2px -344px no-repeat
+}
+
+.s-setting-dialog i.inputRadio.active,.s-setting-dialog i.inputRadio.active:hover {
+    background: url(/dist/newgmat/css/img/form/form-icons.png) -2px -375px no-repeat
+}
+
+.intr-line-mod {
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px;
+    line-height: 28px;
+    cursor: default
+}
+
+.intr-line-mod .intr-tit-word {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 700
+}
+
+.intr-line-mod .intr-defule-word {
+    font-size: 16px;
+    font-weight: 700
+}
+
+.intr-icon-line {
+    margin-top: 15px
+}
+
+.intr-center {
+    text-align: center
+}
+
+.china-word {
+    font-size: 14px;
+    line-height: 28px;
+    font-family: "微软雅黑"
+}
+
+.intr-martop {
+    margin-top: 20px
+}
+
+.intr-mar-none li {
+    margin-left: 20px!important
+}
+
+.intr-next-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 75px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -89px -5px no-repeat
+}
+
+.intr-help-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 75px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -5px -5px no-repeat
+}
+
+.intr-end-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 116px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -173px -5px no-repeat
+}
+
+.intr-onten-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 100px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -300px -5px no-repeat
+}
+
+.intr-time-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 38px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -405px -5px no-repeat
+}
+
+.intr-qnum-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 38px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -5px -85px no-repeat
+}
+
+.intr-cut-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 64px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -5px -45px no-repeat
+}
+
+.intr-copy-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 80px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -85px -45px no-repeat
+}
+
+.intr-paste-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 84px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -175px -45px no-repeat
+}
+
+.intr-undo-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 84px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -270px -45px no-repeat
+}
+
+.intr-redo-icon {
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    width: 84px;
+    height: 30px;
+    background: url(/dist/newgmat/css/img/exercises/intr-icon.png) -365px -45px no-repeat
+}
+
+.intr-ul-list li {
+    margin-top: 15px;
+    margin-left: 50px;
+    list-style: disc!important
+}
+
+.intr-ul-list.awa-explain {
+    margin-top: 20px
+}
+
+.intr-ul-list.awa-explain li {
+    margin-top: 0;
+    line-height: 28px
+}
+
+.intr-selct-list li {
+    margin-top: 10px
+}
+
+.intr-selct-list li .inputRadio {
+    position: relative;
+    top: -2px;
+    margin-right: 10px
+}
+
+.intr-selct-list li .active {
+    background: url(/dist/newgmat/css/img/form/radio.png) no-repeat!important
+}
+
+.intr-center-tit {
+    text-align: center
+}
+
+i.inputRadio {
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
+    background: url(/dist/newgmat/css/img/form/form-icons.png) -4px -99px no-repeat;
+    overflow: hidden
+}
+
+i.inputRadio.active {
+    background-position: -4px -192px
+}
+
+i.inputRadio:hover {
+    background-position: -4px -130px
+}
+
+i.inputRadio:active {
+    background-position: -4px -161px
+}
+
+i.inputRadio.active:hover {
+    background-position: -4px -223px
+}
+
+i.inputRadio.active:active {
+    background-position: -4px -254px
+}
+
+.formRadioContainer i.inputRadio {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 4px;
+    background-position: -2px -344px
+}
+
+.formRadioContainer i.inputRadio.active,.formRadioContainer i.inputRadio.active:hover {
+    background-position: -2px -375px
+}
+
+.formRadioContainer i.inputRadio.disabled,.formRadioContainer i.inputRadio.disabled:hover {
+    background-position: -2px -284px;
+    cursor: default
+}
+
+.formRadioContainer i.inputRadio.active.disabled {
+    background-position: -2px -315px;
+    cursor: default
+}
+
+i.inputCheckbox {
+    width: 20px;
+    height: 18px;
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
+    background: url(/dist/newgmat/css/img/form/form-icons.png) -1px -3px no-repeat;
+    overflow: hidden
+}
+
+i.inputCheckbox:hover {
+    background-position: -1px -34px
+}
+
+i.inputCheckbox.active {
+    background-position: -1px -65px
+}
+
+.formSelectContainer {
+    position: relative;
+    display: inline-block;
+    padding-right: 18px;
+    border: 2px solid transparent;
+    border-radius: 6px
+}
+
+.formSelectContainer.active,.formSelectContainer:active {
+    border-color: #6cb8ed
+}
+
+.formSelectContainer .formSelectMsg {
+    line-height: 20px;
+    height: 22px;
+    width: 100%;
+    padding: 0 4px;
+    background: linear-gradient(to bottom,#fff 0,#dfdfdf 100%);
+    border: 1px solid #000;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: pointer
+}
+
+.formSelectContainer .formSelectMsg::selection {
+    background: 0 0
+}
+
+.formSelectContainer .formSelectMsg::after {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 20px;
+    position: absolute;
+    border: 1px solid #000;
+    border-left: none;
+    -webkit-border-radius: 0 4px 4px 0;
+    -moz-border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0;
+    right: -19px;
+    top: -1px;
+    background: url(/dist/newgmat/css/img/form/form-icons.png) -1px -415px no-repeat
+}
+
+.formSelectContainer .formSelectMsg:active::after {
+    background: url(/dist/newgmat/css/img/form/form-icons.png) -1px -458px no-repeat
+}
+
+.formSelectContainer.active .formSelectMsg,.formSelectContainer.active .formSelectMsg::after,.formSelectContainer:active .formSelectMsg,.formSelectContainer:active .formSelectMsg::after {
+    border-color: #6cb8ed
+}
+
+.formSelectContainer .selectOptionList {
+    background: #e7e7e7;
+    border: 1px solid #000;
+    position: absolute;
+    top: 24px;
+    display: none;
+    z-index: 1
+}
+
+.formSelectContainer .selectOptionList.show {
+    display: block
+}
+
+.formSelectContainer .selectOptionList.hide {
+    display: none
+}
+
+.formSelectContainer .selectOptionList li {
+    cursor: pointer;
+    padding: 0 22px 0 8px;
+    white-space: nowrap
+}
+
+.formSelectContainer .selectOptionList li:first-child {
+    color: #aaaab8;
+    cursor: default
+}
+
+.formSelectContainer .selectOptionList li:first-child:hover {
+    background: 0 0
+}
+
+.formSelectContainer .selectOptionList li:hover {
+    background: #b5e7ff
+}
+
+.formSelectContainer .selectOptionList li.active {
+    background: #84d3ff
+}
+
+.formSelectContainer .selectOptionList li.active:hover {
+    background: #5ab2ef
+}
+
+.error-content-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(000,000,000,.4);
+    z-index: 99
+}
+
+.error-content-bg.bg-opacity {
+    background: rgba(000,000,000,.2)
+}
+
+.error-main-mod {
+    position: fixed;
+    width: 470px;
+    height: 270px;
+    background: #FFF;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    margin-top: -135px;
+    margin-left: -235px
+}
+
+.error-main-mod .top-meg-part {
+    position: relative;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 12px;
+    color: #999;
+    background: #F7F8F9
+}
+
+.error-main-mod .top-meg-part .e-close-icon {
+    position: absolute;
+    right: 12px;
+    top: 9px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: url(/dist/newgmat/css/img/update/error-icon.png) no-repeat
+}
+
+.error-main-mod.pract-style {
+    border: 1px solid #FFF
+}
+
+.error-main-mod .error-edite-mod {
+    padding: 10px 35px 20px
+}
+
+.error-main-mod .form-area {
+    margin-top: 11px;
+    height: auto
+}
+
+.error-main-mod .form-area label {
+    float: left;
+    margin-right: 5px;
+    line-height: 30px;
+    color: #666
+}
+
+.error-main-mod .error-select {
+    display: inline-block;
+    position: relative;
+    width: 125px;
+    height: 28px;
+    border: 1px solid #E5E5E5;
+    line-height: 30px;
+    color: #333;
+    padding-left: 10px;
+    cursor: pointer;
+    background: #FFF
+}
+
+.error-main-mod .error-select .e-select-vl {
+    display: block;
+    width: 100%;
+    height: 100%
+}
+
+.error-main-mod .error-select .e-select-arrow {
+    border-color: #CCC transparent transparent;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    display: inline-block;
+    height: 0;
+    margin-left: 4px;
+    margin-top: 10px;
+    transition: all .25s;
+    vertical-align: top;
+    width: 0;
+    position: absolute;
+    right: 10px;
+    top: 2px
+}
+
+.error-main-mod .error-select:hover .e-select-arrow {
+    border-color: #999 transparent transparent
+}
+
+.error-main-mod .error-select .error-sel-down {
+    width: 135px;
+    height: auto;
+    border: 1px solid #E5E5E5;
+    border-top: none;
+    position: absolute;
+    top: 29px;
+    left: -1px;
+    display: none;
+    background: #FFF
+}
+
+.error-main-mod .error-select .error-sel-down li {
+    float: left;
+    width: 125px;
+    padding-left: 10px;
+    height: 28px;
+    text-align: left;
+    line-height: 28px;
+    cursor: pointer;
+    color: #999
+}
+
+.error-main-mod .error-select .error-sel-down li:hover {
+    background: #F7F8F9
+}
+
+.error-main-mod .wrong-desc-mesg {
+    width: 280px;
+    height: 78px;
+    border: 1px solid #E5E5E5;
+    padding: 10px
+}
+
+.error-main-mod .error-sub-btn {
+    display: inline-block;
+    width: 68px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 2px;
+    margin: 5px 13px 0 97px;
+    color: #FFF;
+    background: #5A92FF
+}
+
+.error-main-mod .error-sub-btn:hover {
+    color: #FFF
+}
+
+.error-main-mod .error-cancel-btn {
+    color: #666
+}
+
+.error-main-mod .remind-wrong {
+    margin-left: 15px;
+    display: inline-block;
+    color: #FC5252
+}
+
+.pract-process-sty {
+    background: 0 0
+}
+
+.pract-process-sty .error-main-mod {
+    width: 435px;
+    background: #246FB0;
+    border: 1px solid #FFF;
+    font-size: 14px;
+    font-family: '微软雅黑'
+}
+
+.pract-process-sty .form-area label {
+    color: #FFF
+}
+
+.pract-process-sty .error-edite-mod {
+    padding: 10px 16px 20px
+}
+
+.pract-process-sty .top-meg-part .e-close-icon {
+    background: url(/dist/newgmat/css/img/update/error-icon.png) no-repeat -28px -1px
+}
+
+.pract-process-sty .top-meg-part {
+    color: #FFF;
+    font-size: 18px;
+    background: #246FB0;
+    border-bottom: 1px solid #fff
+}
+
+.pract-process-sty .error-sub-btn {
+    border-radius: 0;
+    color: #FFF;
+    border: 1px solid #FFF;
+    background: 0 0
+}
+
+.pract-process-sty .error-sub-btn:hover {
+    color: #fefe01
+}
+
+.pract-process-sty .error-cancel-btn {
+    color: #FFF
+}
+
+.pract-process-sty .error-cancel-btn:hover {
+    color: #fefe01
+}
+
+html {
+    height: 100%;
+    background: url(/dist/newgmat/css/img/exercises/bg.jpg)
+}
+
+body {
+    height: 100%;
+    min-width: 1000px;
+    font-size: 16px;
+    line-height: 24px;
+    font-family: Tahoma,Geneva,sans-serif!important
+}

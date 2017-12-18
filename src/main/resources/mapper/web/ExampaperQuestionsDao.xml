@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.web.dao.ExampaperQuestionsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.app.web.entity.ExampaperQuestions" id="exampaperQuestionsMap">
+        <result property="id" column="id"/>
+        <result property="exampaperGroupId" column="exampaper_group_id"/>
+        <result property="questionsId" column="questions_id"/>
+    	<collection property="questions" ofType="com.app.web.entity.Questions"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.app.web.entity.ExampaperQuestions">
+		select exam.*,questions.content as "questions.content",
+		 questions.answer as "questions.answer"
+		from gm_exampaper_questions exam
+		LEFT JOIN gm_questions questions on questions.id=exam.questions_id
+		where exam.id = #{value}
+	</select>
+
+	<select id="queryList" resultType="com.app.web.entity.ExampaperQuestions">
+		select * from gm_exampaper_questions
+		<where>
+			<if test="questionsId!=null">
+				and questions_id=#{questionsId}
+			</if>
+			<if test="questionsId!=null">
+				and exampaper_group_id=#{exampaperGroupId}
+			</if>
+		</where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from gm_exampaper_questions 
+		<where>
+			<if test="questionsId!=null">
+				and questions_id=#{questionsId}
+			</if>
+			<if test="questionsId!=null">
+				and exampaper_group_id=#{exampaperGroupId}
+			</if>
+		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.app.web.entity.ExampaperQuestions" useGeneratedKeys="true" keyProperty="id">
+		insert into gm_exampaper_questions
+		(
+			`exampaper_group_id`, 
+			`questions_id`
+		)
+		values
+		(
+			#{exampaperGroupId}, 
+			#{questionsId}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.app.web.entity.ExampaperQuestions">
+		update gm_exampaper_questions 
+		<set>
+			<if test="exampaperGroupId != null">`exampaper_group_id` = #{exampaperGroupId}, </if>
+			<if test="questionsId != null">`questions_id` = #{questionsId}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from gm_exampaper_questions where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from gm_exampaper_questions where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	<!-- web -->
+	<select id="queryWebByExampaperGroupId" resultType="com.app.web.entity.ExampaperQuestions">
+		select * from gm_exampaper_questions 
+		where exampaper_group_id = #{exampaperGroupId}
+	</select>
+	<!-- 模考模拟 -->
+	<select id="queryIDsByExampaperGroupId" resultType="long">
+		select id from gm_exampaper_questions where exampaper_group_id = #{exampaperGroupId} 
+	</select>
+	
+	<select id="queryByGrammarGroupId" resultType="com.app.web.entity.Questions">
+		select * from gm_questions where grammatical_group_id = #{grammarGroupId}
+	</select>
+	
+</mapper>

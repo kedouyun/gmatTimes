@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.web.dao.SysDictionaryDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.app.web.entity.SysDictionary" id="sysDictionaryMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <result property="dictionaryTypeId" column="dictionary_type_id"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.app.web.entity.SysDictionary">
+		select * from sys_dictionary where id = #{value}
+	</select>
+	<select id="queryByTypeId" resultType="com.app.web.entity.SysDictionary">
+		select * from sys_dictionary where dictionary_type_id = #{value}
+	</select>
+
+	<select id="queryList" resultType="com.app.web.entity.SysDictionary">
+		select dic.*,ty.name typeName from sys_dictionary  dic
+		left join sys_dictionary_type ty on ty.id= dic.dictionary_type_id
+		
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by dic.${sidx} ${order}
+            </when>
+			<otherwise>
+                order by dic.id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from sys_dictionary 
+	</select>
+	 
+	<insert id="save" parameterType="com.app.web.entity.SysDictionary">
+		insert into sys_dictionary
+		(
+			`id`, 
+			`name`, 
+			`dictionary_type_id`
+		)
+		values
+		(
+			#{id}, 
+			#{name}, 
+			#{dictionaryTypeId}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.app.web.entity.SysDictionary">
+		update sys_dictionary 
+		<set>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="code != null">`code` = #{code}, </if>
+			<if test="dictionaryTypeId != null">`dictionary_type_id` = #{dictionaryTypeId}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from sys_dictionary where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from sys_dictionary where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

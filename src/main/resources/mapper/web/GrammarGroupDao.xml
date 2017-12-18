@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.web.dao.GrammarGroupDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.app.web.entity.GrammarGroup" id="grammarGroupMap">
+        <result property="id" column="id"/>
+        <result property="grammarTitleId" column="grammar_title_id"/>
+        <result property="name" column="name"/>
+        <result property="grammarTypesId" column="grammar_types_id"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.app.web.entity.GrammarGroup">
+		select * from gm_grammar_group where id = #{value}
+	</select>
+	<!-- 前端 -->
+	<select id="queryByGrammarTitleId" resultType="com.app.web.entity.GrammarGroup">
+		select gro.*,title.name as grammarTitleName,gro_stat.key "grammarGroupStatus.key",gro_stat.progress "grammarGroupStatus.progress"
+		,(SELECT count(q.id) from gm_questions q where q.grammatical_group_id=gro.id) as questionsCounNum
+		,gro_stat.wrong wrong,gro_stat.progress progress
+		from gm_grammar_group gro
+		left join gm_grammar_title title on title.id=gro.grammar_title_id
+		left join gm_grammar_group_status gro_stat on gro_stat.grammar_group_id=gro.id and gro_stat.user_id=#{loginMemberId}
+		where  gro.grammar_title_id= #{grammarTitleId}
+		and gro.status=1
+	</select>
+
+	<select id="queryList" resultType="com.app.web.entity.GrammarGroup">
+		select gro.*,title.name as grammarTitleName,types.name grammarTypesName 
+		,(SELECT count(q.id) from gm_questions q where q.grammatical_group_id=gro.id) as questionsCounNum
+		from gm_grammar_group gro 
+		left join gm_grammar_title title on title.id=gro.grammar_title_id
+		left join gm_grammar_types types on types.id=title.grammar_types_id
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by gro.id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from gm_grammar_group 
+	</select>
+	<!-- 后端查询 -->
+ 	<select id="queryByGrammarTypesId" resultType="com.app.web.entity.GrammarGroup">
+		select * from gm_grammar_group where grammar_types_id=#{grammarTypesId}
+	</select>
+	 
+	<insert id="save" parameterType="com.app.web.entity.GrammarGroup" useGeneratedKeys="true" keyProperty="id">
+		insert into gm_grammar_group
+		(
+			`grammar_title_id`, 
+			`name`, 
+			`grammar_types_id`,
+			`status`,
+			`person_times`,
+			`avg_accuracy`
+		)
+		values
+		(
+			#{grammarTitleId}, 
+			#{name}, 
+			#{grammarTypesId},
+			#{status},
+			0,
+			0
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.app.web.entity.GrammarGroup">
+		update gm_grammar_group 
+		<set>
+			<if test="grammarTitleId != null">`grammar_title_id` = #{grammarTitleId}, </if>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="grammarTypesId != null">`grammar_types_id` = #{grammarTypesId},</if>
+			<if test="personTimes != null">`person_times` = #{personTimes},</if>
+			<if test="avgAccuracy != null">`avg_accuracy` = #{avgAccuracy},</if>
+			<if test="status != null"> `status` = #{status}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from gm_grammar_group where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from gm_grammar_group where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

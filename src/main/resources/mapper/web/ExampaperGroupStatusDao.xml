@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.web.dao.ExampaperGroupStatusDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.app.web.entity.ExampaperGroupStatus" id="exampaperGroupStatusMap">
+        <result property="id" column="id"/>
+        <result property="contentStatus" column="content_status"/>
+        <result property="key" column="key"/>
+        <result property="createDate" column="create_Date"/>
+        <result property="progress" column="progress"/>
+        <result property="wrong" column="wrong"/>
+        <result property="userId" column="user_id"/>
+        <result property="costTime" column="cost_time"/>
+        <result property="accuracy" column="accuracy"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.app.web.entity.ExampaperGroupStatus">
+		select * from gm_exampaper_group_status where id = #{value}
+	</select>
+
+	<select id="queryList" resultType="com.app.web.entity.ExampaperGroupStatus">
+		select * from gm_exampaper_group_status
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from gm_exampaper_group_status 
+	</select>
+	 
+	<insert id="save" parameterType="com.app.web.entity.ExampaperGroupStatus">
+		insert into gm_exampaper_group_status
+		(
+			`id`, 
+			`content_status`, 
+			`key`, 
+			`create_Date`, 
+			`progress`, 
+			`wrong`, 
+			`user_id`, 
+			`cost_time`, 
+			`accuracy`
+		)
+		values
+		(
+			#{id}, 
+			#{contentStatus}, 
+			#{key}, 
+			now(), 
+			#{progress}, 
+			#{wrong}, 
+			#{userId}, 
+			#{costTime}, 
+			#{accuracy}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.app.web.entity.ExampaperGroupStatus">
+		update gm_exampaper_group_status 
+		<set>
+			<if test="contentStatus != null">`content_status` = #{contentStatus}, </if>
+			<if test="key != null">`key` = #{key}, </if>
+			<if test="createDate != null">`create_Date` = #{createDate}, </if>
+			<if test="progress != null">`progress` = #{progress}, </if>
+			<if test="wrong != null">`wrong` = #{wrong}, </if>
+			<if test="userId != null">`user_id` = #{userId}, </if>
+			<if test="costTime != null">`cost_time` = #{costTime}, </if>
+			<if test="accuracy != null">`accuracy` = #{accuracy}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from gm_exampaper_group_status where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from gm_exampaper_group_status where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<select id="queryByUserAndKey" resultType="com.app.web.entity.ExampaperGroupStatus">
+		select * from gm_exampaper_group_status where user_id = #{memberId} and key=#{rediskey}
+	</select>
+
+</mapper>

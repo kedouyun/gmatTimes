@@ -36,9 +36,9 @@
 				     <tr>
 			            <td style="width: 1px"><input type="checkbox" name="arrayid" value="${member.id}"/></td>
 			            <td>${member.id }</td>
-			            <td>${member.name }</td>
+			            <td>${member.username }</td>
 			            <td>${member.email}</td>
-			            <td>${member.mobile}</td>
+			            <td>${member.phone}</td>
 			            <td><fmt:formatDate value="${member.createDate}" type="date" pattern="yyyy-MM-dd HH:mm"/></td>
 			            <td>
 							<a onclick="show_window('900px','400px','<%=basePath %>/sys/user/edit.do?id=${member.id}','添加')" href="javascript:;" class="">查看</a>

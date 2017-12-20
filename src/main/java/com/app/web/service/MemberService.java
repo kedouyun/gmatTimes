@@ -1,6 +1,8 @@
 package com.app.web.service;
 
 import com.app.web.entity.Member;
+import com.app.web.utils.ExecuteResult;
+
 import java.util.List;
 import java.util.Map;
 
@@ -28,5 +30,7 @@ public interface MemberService {
 	Member queryByEmail(String content);
 
 	Member queryByMobile(String content);
+
+	ExecuteResult<Integer> updatePassword(Member member, String oldpassword, String newpassword, String re_newpassword);
 
 }

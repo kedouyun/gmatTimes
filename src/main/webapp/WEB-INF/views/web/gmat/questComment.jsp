@@ -110,7 +110,7 @@
 					<div class="entitled-discuss-entry">
 						<div class="entitled-user-photo">
 							<img
-								src="http://img.kmf.com/gre/bbs/5a/5a7a99515458f7fcbaa826d4863cc210.jpg"
+								src="${baseurl}${sessionScope.member.headImage}"
 								alt="用户头像">
 						</div>
 						<div class="entitled-textarea-container">
@@ -142,13 +142,13 @@
 									<div class="user-photo-details">
 										<!--头像容器-->
 										<div class="user-photo-container">
-											<img src="http://img.kmf.com/gre/bbs/d4/d4ce8d63c55c49f5124a868ee592e58f.jpg"
+											<img src="${baseurl}${page.headImage}"
 												alt="PriscillaWEI" class="user-head-img js-user-cards fl">
 										</div>
 									</div>
 									<div class="fl user-head-info">
 										<h3 class="user-head-name">
-											<b class="js-user-cards">PriscillaWEI</b>
+											<b class="js-user-cards">${page.memberName}</b>
 										</h3>
 										<p class="user-head-msg">${page.content}</p>
 										<div class="user-message-main g-clearfix">
@@ -195,14 +195,14 @@
 												<div class="user-photo-details">
 													<!--头像容器-->
 													<div class="user-photo-container">
-														<img src="//code.kmf.com/dist/common/images/avatar.jpg"
+														<img src="${baseurl}${page.headImage}"
 															alt="fzjj" class="user-head-img js-user-cards fl">
 													</div>
 												</div>
 												<div class="fl user-head-info">
 													<h3 class="user-head-name">
-														<b class="js-user-cards">fzjj</b> <em class="is-tips-two">回复</em>
-														<b class="js-user-cards" data-id="">fzjj</b>
+														<b class="js-user-cards">${page.memberName}</b> <em class="is-tips-two">回复</em>
+														<b class="js-user-cards" data-id="">${page.toMemberName}</b>
 		
 													</h3>
 													<p class="user-head-msg">${page.content}</p>
@@ -1213,7 +1213,7 @@
 			if(temp){
 				  $.ajax({
 		              type: "POST",
-		              url: "/comment/gmat/save",
+		              url: "${baseurl}/comment/gmat/save",
 		              data:{content:temp,questionId:$("#questionId").val()},
 		              dataType: "json",
 		              success: function(r){
@@ -1242,7 +1242,7 @@
 			if(temp){
 				$.ajax({
 		              type: "POST",
-		              url: "/comment/gmat/save",
+		              url: "${baseurl}/comment/gmat/save",
 		              data:{content:temp,questionId:$("#questionId").val(),toMemberId:to_memberId,parentId:data_pid},
 		              dataType: "json",
 		              success: function(r){
@@ -1257,7 +1257,7 @@
 			debugger;
 			$.ajax({
 	              type: "POST",
-	              url: "/comment/gmat/faver",
+	              url: "${baseurl}/comment/gmat/faver",
 	              data:{commentId:dataId},
 	              dataType: "json",
 	              success: function(r){

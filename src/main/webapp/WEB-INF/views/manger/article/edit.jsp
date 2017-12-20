@@ -109,7 +109,7 @@
             onSend: function (obj, str) { return true; },
             // 上传之后回调
             onComplate: function (data) {
-	            $("#show_img").attr("src",data.url);
+	            $("#show_img").attr("src","${basePath}"+data.url);
 	            debugger;
 	            $("#imagePathOne").val(data.url);
             }

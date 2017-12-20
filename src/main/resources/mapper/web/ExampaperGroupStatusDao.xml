@@ -49,7 +49,9 @@
 			`wrong`, 
 			`user_id`, 
 			`cost_time`, 
-			`accuracy`
+			`accuracy`,
+			`total_score`,
+			`member_total_score`
 		)
 		values
 		(
@@ -61,7 +63,9 @@
 			#{wrong}, 
 			#{userId}, 
 			#{costTime}, 
-			#{accuracy}
+			#{accuracy},
+			#{totalScore},
+			#{memberTotalScore}
 		)
 	</insert>
 	 
@@ -75,7 +79,9 @@
 			<if test="wrong != null">`wrong` = #{wrong}, </if>
 			<if test="userId != null">`user_id` = #{userId}, </if>
 			<if test="costTime != null">`cost_time` = #{costTime}, </if>
-			<if test="accuracy != null">`accuracy` = #{accuracy}</if>
+			<if test="accuracy != null">`accuracy` = #{accuracy},</if>
+			<if test="totalScore != null">`total_score` = #{totalScore},</if>
+			<if test="memberTotalScore != null">`member_total_score` = #{memberTotalScore}</if>
 		</set>
 		where id = #{id}
 	</update>

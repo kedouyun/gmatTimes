@@ -3,6 +3,7 @@ package com.app.config.login;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -14,8 +15,8 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  */
 @Component
 public class ApiInterceptor extends HandlerInterceptorAdapter {
-
-   
+	@Value("${system_url}")
+   String system_url;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -25,7 +26,7 @@ public class ApiInterceptor extends HandlerInterceptorAdapter {
             annotation = ((HandlerMethod) handler).getMethodAnnotation(Login.class);
             if(annotation!=null){
             	 if(request.getSession().getAttribute("member")==null){
-            		 response.sendRedirect("../user/login");
+            		 response.sendRedirect(system_url+"/user/login");
             		 return false;
             	 }
             }

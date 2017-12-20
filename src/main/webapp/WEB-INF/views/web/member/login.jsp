@@ -63,8 +63,8 @@
 												<div class="checkbox">
 												</div> 
 												<button type="submit" class="btn btn-default">登陆</button>
-												<a href="/user/forgot" class="btn btn-default">忘记密码</a>
-											</form>	
+												<a href="${baseurl}/user/forgot" class="btn btn-default">忘记密码</a>
+											</form>
 										</div>
 									</div>
 								</div>	

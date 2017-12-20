@@ -300,7 +300,7 @@
                 	$(".true-answer").text("正确答案："+r.exemVo.answer);
                 	
        				MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
-       				$(".btn-commont").attr("href","${baseurl}/comment/gmat/"+dataId);
+       				$(".btn-commont").attr("href","${baseurl}/comment/exam/"+dataId);
        				
             	  }
               }

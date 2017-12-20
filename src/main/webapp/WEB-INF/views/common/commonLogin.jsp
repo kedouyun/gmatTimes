@@ -26,7 +26,7 @@
 				
 				<c:if test="${!empty sessionScope.member}">
 					<li>
-						<a href="${baseurl}/user/center">${sessionScope.member.name}</a>
+						<a href="${baseurl}/user/my/center">${sessionScope.member.username}</a>
 					</li>
 					<li class="dropdown">
 					 <a href="#" class="dropdown-toggle" data-toggle="dropdown">我的<strong class="caret"></strong></a>
@@ -35,7 +35,7 @@
 							 <a href="#">我的课程</a>
 						</li>
 						<li>
-							 <a href="#">消息</a>
+							 <a href="${baseurl}/message/list">消息</a>
 						</li>
 						<li>
 							 <a href="#">账号管理</a>
@@ -43,7 +43,7 @@
 						<li class="divider">
 						</li>
 						<li>
-							 <a href="#">退出</a>
+							 <a href="${baseurl}/user/exit">退出</a>
 						</li>
 					</ul>
 				</li>

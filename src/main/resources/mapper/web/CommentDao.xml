@@ -16,7 +16,12 @@
     </resultMap>
 
 	<select id="queryObject" resultType="com.app.web.entity.Comment">
-		select * from gm_comment where id = #{value}
+		select comm.*,mem.username memberName,mem.head_image headImage,mem2.username as toMemberName,
+		(CASE WHEN (SELECT comment_id FROM gm_comment_faver   WHERE comment_id=comm.id and member_id=#{memberId}) IS NULL THEN 0 ELSE 1 END) isFavor
+		from gm_comment comm
+		LEFT JOIN gm_member mem on mem.id=comm.member_id
+		LEFT JOIN gm_member mem2 on mem2.id=comm.to_member_id
+		 where comm.id = #{value}
 	</select>
 
 	<select id="queryList" resultType="com.app.web.entity.Comment">
@@ -52,8 +57,10 @@
   
 	 <select id="queryWebList"  resultMap="commentResult" >
 		select comm.*,
-		mem.name memberName,mem.head_image headImage,
-		(CASE WHEN (SELECT comment_id FROM gm_comment_faver   WHERE comment_id=comm.id and member_id=#{memberId}) IS NULL THEN 0 ELSE 1 END) isFavor 
+		mem.username memberName,mem.head_image headImage,
+		(CASE WHEN (SELECT comment_id FROM gm_comment_faver 
+		WHERE comment_id=comm.id and member_id=#{memberId}) 
+		IS NULL THEN 0 ELSE 1 END) isFavor 
 		from gm_comment comm
 		LEFT JOIN gm_member mem on mem.id=comm.member_id
 		where  comm.status=1 and comm.parent_id is null
@@ -72,10 +79,11 @@
 	</select>
 	
 	<select id="findPinglunById"  resultType="com.app.web.entity.Comment" >
-		select comm.*,mem.name memberName,mem.head_image headImage,
+		select comm.*,mem.username memberName,mem.head_image headImage,mem2.username as toMemberName,
 		(CASE WHEN (SELECT comment_id FROM gm_comment_faver   WHERE comment_id=comm.id and member_id=#{memberId}) IS NULL THEN 0 ELSE 1 END) isFavor
 		from gm_comment comm
 		LEFT JOIN gm_member mem on mem.id=comm.member_id
+		LEFT JOIN gm_member mem2 on mem2.id=comm.to_member_id
 		where  comm.status=1 and comm.parent_id=#{id}
 	</select>
 	

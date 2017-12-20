@@ -34,6 +34,7 @@
    					 <th>平均得分</th>
    					 <th>试题数</th>
    					 <th>时间限制(Minute)</th>
+   					 <th>排序</th>
 			      	 <th>操作</th>
 			    </tr>
 			    </thead>
@@ -51,6 +52,7 @@
 					    	<a onclick="show_window('1000px','450px','${basePath}/manger/questions/myschoose.do?exampaperGroupId=${exampaperGroup.id}','试卷列表')" href="javascript:;" class="">${exampaperGroup.questionsCounNum}</a>
 					    </td>
 						<td>${exampaperGroup.limitTime}</td>
+						<td>${exampaperGroup.sort}</td>
 						<td>
 							<a onclick="show_window('900px','400px','${basePath}/manger/exampaperGroup/edit.do?id=${exampaperGroup.id}','添加')" href="javascript:;" class=""><i class="fa fa-pencil-square-o"></i>修改</a>
 							<a onclick="show_window('1000px','450px','${basePath}/manger/questions/schoose.do?exampaperGroupId=${exampaperGroup.id}','组合试卷')" href="javascript:;" class="">组合试卷</a>
@@ -59,7 +61,7 @@
 			        </tr>
 				</c:forEach>
 				<tr>
-			      	<td colspan="11">
+			      	<td colspan="12">
 			      		<div class="fenye" style="text-align: right;">
 							<m:pageInfo name="pageInfo" />
 						</div>

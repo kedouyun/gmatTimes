@@ -29,6 +29,22 @@ public class ExampaperGroupStatus implements Serializable {
 	//
 	private Float accuracy;
 
+	private Integer totalScore;//总分数
+	
+	private Integer memberTotalScore;//总分数
+	
+	public Integer getMemberTotalScore() {
+		return memberTotalScore;
+	}
+	public void setMemberTotalScore(Integer memberTotalScore) {
+		this.memberTotalScore = memberTotalScore;
+	}
+	public Integer getTotalScore() {
+		return totalScore;
+	}
+	public void setTotalScore(Integer totalScore) {
+		this.totalScore = totalScore;
+	}
 	/**
 	 * 设置：
 	 */

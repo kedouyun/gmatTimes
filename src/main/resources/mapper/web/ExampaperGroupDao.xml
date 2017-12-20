@@ -35,7 +35,7 @@
                 order by gro.${sidx} ${order}
             </when>
 			<otherwise>
-                order by gro.id desc
+                order by gro.sort, gro.id desc
 			</otherwise>
         </choose>
 		<if test="offset != null and limit != null">
@@ -61,7 +61,8 @@
 			`create_date`, 
 			`person_times`, 
 			`avg_accuracy`,
-			`limit_time`
+			`limit_time`,
+			`sort`
 		)
 		values
 		(
@@ -71,7 +72,8 @@
 			#{createDate}, 
 			#{personTimes}, 
 			#{avgAccuracy},
-			#{limitTime}
+			#{limitTime},
+			#{sort}
 		)
 	</insert>
 	 
@@ -84,7 +86,8 @@
 			<if test="createDate != null">`create_date` = #{createDate}, </if>
 			<if test="personTimes != null">`person_times` = #{personTimes}, </if>
 			<if test="avgAccuracy != null">`avg_accuracy` = #{avgAccuracy},</if>
-			<if test="limitTime != null">`limit_time` = #{limitTime}</if>
+			<if test="limitTime != null">`limit_time` = #{limitTime},</if>
+			<if test="sort != null">`sort` = #{sort}</if>
 		</set>
 		where id = #{id}
 	</update>

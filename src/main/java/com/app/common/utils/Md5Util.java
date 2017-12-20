@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Md5Util {
 	public static void main(String[] args) {
-		System.out.println(getMD5Code("Bagukeji85"));
+		System.out.println(getMD5Code("111111"));
 	}
 	// 全局数组
 	private static final String[] strDigits = { "0", "1", "2", "3", "4", "5",

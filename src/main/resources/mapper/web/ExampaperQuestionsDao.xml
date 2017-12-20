@@ -12,6 +12,7 @@
 
 	<select id="queryObject" resultType="com.app.web.entity.ExampaperQuestions">
 		select exam.*,questions.content as "questions.content",
+		questions.score as "questions.score",
 		 questions.answer as "questions.answer"
 		from gm_exampaper_questions exam
 		LEFT JOIN gm_questions questions on questions.id=exam.questions_id

@@ -88,6 +88,7 @@ public class ExamController extends AbstractWebController{
 		String rediskey="g"+RandomUtils.generateIntString(17);
 		ExemConfig config=new ExemConfig();
 		config.setQuestionIds(questionIds);
+		config.setLimitTime(exampaper.getLimitTime()*60);//考试时间限制
 		redisUtils.set(rediskey,config);
 		return "redirect:/exam/exercise/"+exampaperGroupId+"/"+rediskey;
 	}
@@ -117,13 +118,13 @@ public class ExamController extends AbstractWebController{
 		model.addAttribute("rediskey", rediskey);
 		model.addAttribute("exampaperGroupId", exampaperGroupId);
 		model.addAttribute("quest", parse);
-		model.addAttribute("config", config);
+		model.addAttribute("config", config);//当前试题的约束信息和集合状态信息
 		model.addAttribute("questionsNum", config.getQuestionIds().size());//共计多少题
 		
 		model.addAttribute("exampaperQuestions", exampaperQuestions);
 		return "/web/exam/examing";
 	}
-	
+	//提交保存模拟试题
 	@PostMapping("/exercise/{exampaperGroupId}/{rediskey}")
 	public String goPost(ModelMap model,ExemVo exemVo,@PathVariable("exampaperGroupId") Long exampaperGroupId,@PathVariable("rediskey") String rediskey){
 		ExemConfig config = redisUtils.get(rediskey,ExemConfig.class);
@@ -153,6 +154,7 @@ public class ExamController extends AbstractWebController{
 		vo.setAnswer(questions.getAnswer());
 		vo.setOverTime(exemVo.getOverTime());
 		vo.setUserAnswer(exemVo.getAnswer());
+		vo.setScore(questions.getScore());
 		
 		if(questions.getAnswer().equalsIgnoreCase(exemVo.getAnswer())){
 			vo.setStatus(true);
@@ -189,6 +191,7 @@ public class ExamController extends AbstractWebController{
 		model.addAttribute("groupkey", rediskey);
 		return "/web/exam/examResult";
 	}
+	
 	private ExampaperQuestions chooseNext(ExemConfig config, Integer arrId) {
 		List<Long> exampaperQuestionIds = config.getQuestionIds();
 		Long long1=0L;
@@ -199,7 +202,6 @@ public class ExamController extends AbstractWebController{
 				response.sendRedirect(request.getContextPath()+"/exam");
 			} catch (IOException e1) {
 			}
-			e.printStackTrace();
 		}
 		ExampaperQuestions questions = exampaperQuestionsService.queryObject(long1);
 		
@@ -211,6 +213,24 @@ public class ExamController extends AbstractWebController{
 		 return questions;
 	}
 	
+	//请求结束考试
+	@PostMapping("/exercise/selfresult/{exampaperGroupId}/{rediskey}")
+	public String selfresult(ModelMap model,@PathVariable("exampaperGroupId") Long exampaperGroupId,@PathVariable("rediskey") String rediskey){
+		ExemConfig config = redisUtils.get(rediskey,ExemConfig.class);
+		
+		if(config==null||null==config.getAnswer()||0==config.getAnswer().size()){
+			return "redirect:/exam";
+		}
+		if(config.getQuestionIds().size()>0){
+			exampaperQuestionsService.saveOrUpdateStatus(config,exampaperGroupId,getLoginMember(),rediskey);
+			redisUtils.set(rediskey, config);
+			
+			return "redirect:/exam/exercise/result/"+exampaperGroupId+"/"+rediskey;
+		}
+		return "/web/gmat/exemResult";
+	}
+		
+		
 	//查看试题答案解析
 	@ResponseBody
 	@GetMapping("/exercise/detailQuestion/{rediskey}/{question_id}")

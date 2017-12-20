@@ -24,12 +24,20 @@ public class GrammarGroup implements Serializable {
 	private Integer personTimes;//练习次数
 	private Float avgAccuracy;//平均正确率
 	private String useTime;//建议花费时间
+	private Integer sort;//排序
 	
 	private Integer wrong;//vo     错题数
 	private Integer progress;//vo  当前进度
 	
 	private GrammarGroupStatus grammarGroupStatus;
 	
+	
+	public Integer getSort() {
+		return sort;
+	}
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
 	public GrammarGroupStatus getGrammarGroupStatus() {
 		return grammarGroupStatus;
 	}

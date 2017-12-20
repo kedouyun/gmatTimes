@@ -2,15 +2,24 @@ package com.app.web.vo;
 
 public class ExemVo {
 	
-	private String answer;
-	private String userAnswer;
-	private Boolean status;
+	private String answer;//正确答案
+	private String userAnswer;//用户答案
+	private Boolean status;//是否正确
 	
-	private Integer overTime;
+	private Integer overTime;//单提 考试花费时间
 	
 	private Integer overExem;//1 考试结束
 	
+	private Integer score;//单题分值
 	
+	public Integer getScore() {
+		return score;
+	}
+
+	public void setScore(Integer score) {
+		this.score = score;
+	}
+
 	public Integer getOverExem() {
 		return overExem;
 	}

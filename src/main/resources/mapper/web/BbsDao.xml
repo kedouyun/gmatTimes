@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.web.dao.bbs">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.app.web.entity.Bbs" id="bbsMap">
+        <result property="id" column="id"/>
+        <result property="memberId" column="member_id"/>
+        <result property="toMemberId" column="to_member_id"/>
+        <result property="content" column="content"/>
+        <result property="status" column="status"/>
+        <result property="faver" column="faver"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="createDate" column="create_date"/>
+    </resultMap>
+
+	<select id="queryObject" resultType="com.app.web.entity.Bbs">
+		select * from gm_bbs where id = #{value}
+	</select>
+
+	<select id="queryList" resultType="com.app.web.entity.Bbs">
+		select * from gm_bbs
+		<where>
+			<if test="status != null"> and status=#{status}</if>
+		</where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from gm_bbs
+		<where>
+			<if test="status != null"> and status=#{status}</if>
+		</where> 
+	</select>
+	 
+  <resultMap id="bbsResult" type="com.app.web.entity.Bbs" extends="bbsMap">
+    
+    <collection property="bbsList" javaType="ArrayList" column="id" ofType="com.app.web.entity.Bbs" select="findPinglunById">
+   </collection>
+  </resultMap>
+  
+	 <select id="queryWebList"  resultMap="bbsResult" >
+		select comm.*,
+		mem.username memberName,mem.head_image headImage,
+		(CASE WHEN (SELECT bbs_id FROM gm_bbs_faver 
+		WHERE bbs_id=comm.id and member_id=#{memberId}) 
+		IS NULL THEN 0 ELSE 1 END) isFavor 
+		from gm_bbs comm
+		LEFT JOIN gm_member mem on mem.id=comm.member_id
+		where  comm.status=1 and comm.parent_id is null
+
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by comm.${sidx} ${order}
+            </when>
+			<otherwise>
+                order by comm.id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	<select id="findPinglunById"  resultType="com.app.web.entity.Bbs" >
+		select comm.*,mem.username memberName,mem.head_image headImage,
+		(CASE WHEN (SELECT bbs_id FROM gm_bbs_faver   WHERE bbs_id=comm.id and member_id=#{memberId}) IS NULL THEN 0 ELSE 1 END) isFavor
+		from gm_bbs comm
+		LEFT JOIN gm_member mem on mem.id=comm.member_id
+		where  comm.status=1 and comm.parent_id=#{id}
+	</select>
+	
+ 	<select id="queryWebTotal" resultType="int">
+		select count(*)  from gm_bbs comm
+		LEFT JOIN gm_member mem on mem.id=comm.member_id
+		where  comm.status=1 and comm.to_member_id is null
+	</select>
+	
+	
+	<insert id="save" parameterType="com.app.web.entity.Bbs" keyProperty="id" useGeneratedKeys="true">
+		insert into gm_bbs
+		(
+			`id`, 
+			`member_id`, 
+			`to_member_id`, 
+			`content`, 
+			`status`, 
+			`faver`, 
+			`question_id`, 
+			`parent_id`, 
+			`create_date`
+		)
+		values
+		(
+			#{id}, 
+			#{memberId}, 
+			#{toMemberId}, 
+			#{content}, 
+			1,
+			0,
+			#{questionId}, 
+			#{parentId}, 
+			now()
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.app.web.entity.Bbs">
+		update gm_bbs 
+		<set>
+			<if test="memberId != null">`member_id` = #{memberId}, </if>
+			<if test="toMemberId != null">`to_member_id` = #{toMemberId}, </if>
+			<if test="content != null">`content` = #{content}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="faver != null">`faver` = #{faver}, </if>
+			<if test="parentId != null">`parent_id` = #{parentId}, </if>
+			<if test="createDate != null">`create_date` = #{createDate}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from gm_bbs where id = #{value}
+	</delete>
+	
+	<delete id="deleteBatch">
+		delete from gm_bbs where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

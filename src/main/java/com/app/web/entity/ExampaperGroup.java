@@ -24,6 +24,10 @@ public class ExampaperGroup implements Serializable {
 	private Integer personTimes;
 	//平均得分
 	private Float avgAccuracy;
+	
+	private Integer sort;//排序
+	
+	
 	//vo 试卷名
 	private String exampaperName;
 	
@@ -32,6 +36,12 @@ public class ExampaperGroup implements Serializable {
 private Integer limitTime;//限制时间踢动提交
 	
 	
+	public Integer getSort() {
+		return sort;
+	}
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
 	public Integer getLimitTime() {
 		return limitTime;
 	}

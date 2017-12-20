@@ -11,7 +11,7 @@
         <result property="createDate" column="create_date"/>
     </resultMap>
 
-	<select id="queryObject" resultType="com.app.web.entity.Exampaper">
+	<select id="queryObject"  resultType="com.app.web.entity.Exampaper">
 		select * from gm_exampaper where id = #{value}
 	</select>
 	

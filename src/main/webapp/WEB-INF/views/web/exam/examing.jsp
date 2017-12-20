@@ -309,10 +309,14 @@
 		}
 		
 	});
-	
+	var limitTime=${config.limitTime};
 	var secent=0;
 	 setInterval(function () {
 		secent=secent+1;
+		if(limitTime<=secent){
+			//alert("考试时间到了,确定提交试卷了！");
+			//$("#js-next").click();
+		}
 		var text=formatSeconds2(secent);
 		$("#overTime").val(secent);
 		$("#js-time").find("span").text("Time cost "+text);
@@ -336,8 +340,8 @@
 	})
 	
 	$(".js-enter-btn").click(function(){
-		$("#overExem").val("1");
-		$("#questionForm").attr("action","${baseurl}/gmat/practice/selfresult/"+$("#exampaperGroupId").val()+"/"+$("#u").val());
+		$("#overExem").val("1");//提交结束去看考试结果
+		$("#questionForm").attr("action","${baseurl}/exam/exercise/selfresult/"+$("#exampaperGroupId").val()+"/"+$("#u").val());
 		$("#questionForm").submit();
 	})
 	

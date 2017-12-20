@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.fastjson.JSONObject;
 import com.app.common.utils.CaptchaUtil;
+import com.app.common.utils.Md5Util;
 import com.app.common.utils.RedisUtils;
 import com.app.web.base.AbstractWebController;
+import com.app.web.config.AsyncService;
 import com.app.web.entity.Member;
 import com.app.web.service.MemberService;
 import com.app.web.service.impl.MailService;
@@ -43,7 +45,9 @@ public class LoginController extends AbstractWebController{
 	private MemberService memberService;
 	@Autowired
 	private RedisUtils redisUtils;
-
+	@Autowired
+	AsyncService asyncService;
+	
 	@RequestMapping("/user/login")
 	public String login(ModelMap model){
 		model.addAttribute("flag", "login");
@@ -68,7 +72,7 @@ public class LoginController extends AbstractWebController{
 		
 		Member member = memberService.queryByEmail(email);
 		if(member!=null){
-			if(member.getPassword().endsWith(password)){
+			if(member.getPassword().endsWith(Md5Util.getMD5Code(password))){
 				session.setAttribute("member", member);
 				return "/web/index";
 			}else{
@@ -78,6 +82,12 @@ public class LoginController extends AbstractWebController{
 			model.addAttribute("mess", "输入邮箱不正确");
 		}
 		return "/web/member/login";
+	}
+	
+	@RequestMapping("/user/exit")
+	public String exitAction(){
+		session.invalidate();
+		return "redirect:/index";
 	}
 	
 	
@@ -92,11 +102,12 @@ public class LoginController extends AbstractWebController{
 	}
 	
 	@PostMapping("/user/forgot")
-	public String forgotAction(String email){
+	public String forgotAction(String email, ModelMap model){
 		if(StringUtils.isNotBlank(email)){
-			this.sendValidateEmail(email);
+			asyncService.sendValidateEmail(email);
 		}
-		return "/web/forgot";
+		model.addAttribute("message", "邮箱发送成功");
+		return "web/member/successful";
 	}
 	
 	@GetMapping("/user/newpassword/{token}")
@@ -106,25 +117,22 @@ public class LoginController extends AbstractWebController{
 	}
 	
 	@PostMapping("/user/newpassword/{token}")
-	public String newpassword(@PathVariable("token") String token,  String password){
+	public String newpassword(@PathVariable("token") String token,  String password, ModelMap model){
 		String email = redisUtils.get(token);
 		if(StringUtils.isBlank(password)){
-			return "web/member/forgot";
+			model.addAttribute("message", "改地址已失效");
+			return "web/member/successful";
 		}
 		if(StringUtils.isNotBlank(email)){
 			Member	member=memberService.queryByEmail(email);
-			member.setPassword(password);
+			member.setPassword(Md5Util.getMD5Code(password));
 			memberService.update(member);
+			redisUtils.delete(token);
+			model.addAttribute("message", "密码修改成功");
+		}else{
+			model.addAttribute("message", "改地址已失效");
 		}
-		
-		return "web/member/forgot";
+		return "web/member/successful";
 	}
 	
-	@Async
-	private void sendValidateEmail(String email){
-	String token = UUID.randomUUID().toString();
-	redisUtils.set(token, email);
-	logger.error("用户找回密码，准备发送邮件：User:" + email + ", Token: " + token);
-		mailService.userPasswordforgot(email, token);
-	}
 }

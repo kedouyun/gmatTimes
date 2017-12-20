@@ -40,7 +40,7 @@
 									<div class="tab-content">
 										<c:if test="${empty token}">
 											<div class="tab-pane active" id="panel-145802">
-												<form role="form" action="/user/forgot"  method="POST">
+												<form role="form" action="${baseurl}/user/forgot"  method="POST">
 													<div class="form-group">
 														<input type="email" name="email" class="form-control" id="input_Email1" placeholder="请输入邮箱"/>
 														<!--  <label for="exampleInputEmail1">邮箱注册</label> -->
@@ -53,7 +53,7 @@
 										</c:if>
 											<c:if test="${!empty token}">
 											<div class="tab-pane active" id="panel-145802">
-												<form role="form" action="/user/newpassword/${token}"  method="POST">
+												<form role="form" action="${baseurl}/user/newpassword/${token}"  method="POST">
 													<div class="form-group">
 														<input type="password" name="password" class="form-control" id="input_Email1" placeholder="请输入密码"/>
 														<!--  <label for="exampleInputEmail1">邮箱注册</label> -->

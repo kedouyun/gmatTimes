@@ -58,6 +58,13 @@
 			</div>
 			
 			<div class="form-group">
+				<label class="col-sm-2 control-label">排序(从小到大排序)</label>
+				<div class="col-sm-6">
+					<input type="number" class="form-control" name="sort" value="" placeholder="请输入整数"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
 				<label class="col-sm-2 control-label"></label>
 				<input type="submit" class="btn btn-primary submitButton" value="确定"/>
 				&nbsp;&nbsp;<input type="button" class="btn btn-warning colose"  value="关闭"/>

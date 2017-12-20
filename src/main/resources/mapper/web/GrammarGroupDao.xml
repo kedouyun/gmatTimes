@@ -22,7 +22,7 @@
 		left join gm_grammar_title title on title.id=gro.grammar_title_id
 		left join gm_grammar_group_status gro_stat on gro_stat.grammar_group_id=gro.id and gro_stat.user_id=#{loginMemberId}
 		where  gro.grammar_title_id= #{grammarTitleId}
-		and gro.status=1
+		and gro.status=1 order by gro.sort desc
 	</select>
 
 	<select id="queryList" resultType="com.app.web.entity.GrammarGroup">
@@ -36,7 +36,7 @@
                 order by ${sidx} ${order}
             </when>
 			<otherwise>
-                order by gro.id desc
+                order by gro.sort, gro.id desc
 			</otherwise>
         </choose>
 		<if test="offset != null and limit != null">
@@ -60,7 +60,8 @@
 			`grammar_types_id`,
 			`status`,
 			`person_times`,
-			`avg_accuracy`
+			`avg_accuracy`,
+			`sort`
 		)
 		values
 		(
@@ -69,7 +70,8 @@
 			#{grammarTypesId},
 			#{status},
 			0,
-			0
+			0,
+			#{sort}
 		)
 	</insert>
 	 
@@ -81,7 +83,8 @@
 			<if test="grammarTypesId != null">`grammar_types_id` = #{grammarTypesId},</if>
 			<if test="personTimes != null">`person_times` = #{personTimes},</if>
 			<if test="avgAccuracy != null">`avg_accuracy` = #{avgAccuracy},</if>
-			<if test="status != null"> `status` = #{status}</if>
+			<if test="status != null"> `status` = #{status},</if>
+			<if test="sort != null"> `sort` = #{sort}</if>
 		</set>
 		where id = #{id}
 	</update>

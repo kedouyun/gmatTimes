@@ -10,5 +10,7 @@ public interface MemberDao extends BaseDao<Member> {
 	Member queryByEmail(String email);
 
 	Member queryByMobile(String mobile);
+
+	Member queryByUserName(String username);
 	
 }

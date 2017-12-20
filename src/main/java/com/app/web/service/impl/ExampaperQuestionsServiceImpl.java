@@ -74,17 +74,22 @@ public class ExampaperQuestionsServiceImpl implements ExampaperQuestionsService 
 
 	@Override
 	public void saveOrUpdateStatus(ExemConfig config, Long exampaperGroupId, Member member, String rediskey) {
-		Integer progress =0;
-		Integer wrong =0;
-		Integer overTime =0;
-		
+		Integer progress =0;//当前进度
+		Integer wrong =0;//错误数
+		Integer overTime =0;//花费时间秒
+		Integer totalScore =0;//总分值
+		Integer memberTotalScore=0;
 		Map<Long, ExemVo> answer = config.getAnswer();
 		
 		for (Long questionId : answer.keySet()) {
 			progress++;
 			if(answer.get(questionId).getStatus()!=null&&!answer.get(questionId).getStatus()){
 				wrong++;
+			}else{
+				//正确的试题单题分数
+				memberTotalScore=memberTotalScore+answer.get(questionId).getScore();//分数
 			}
+			totalScore=totalScore+answer.get(questionId).getScore();//分数
 			overTime=overTime+answer.get(questionId).getOverTime();
 		}
 		
@@ -99,8 +104,6 @@ public class ExampaperQuestionsServiceImpl implements ExampaperQuestionsService 
 		}
 		
 		if(member!=null){//保存用户题组状态
-			
-			
 			Map<String, Object> map=new HashMap<>();
 			map.put("userId", member.getId());
 			map.put("grammarGroupId", exampaperGroupId);
@@ -126,6 +129,8 @@ public class ExampaperQuestionsServiceImpl implements ExampaperQuestionsService 
 				grammarGroupStatus.setAccuracy(f);
 				grammarGroupStatus.setContentStatus(JSON.toJSONString(config).toString());
 				grammarGroupStatus.setKey(rediskey);
+				grammarGroupStatus.setTotalScore(totalScore);
+				grammarGroupStatus.setMemberTotalScore(memberTotalScore);
 				exampaperGroupStatusDao.update(grammarGroupStatus);
 			}else{
 				ExampaperGroupStatus grammarGroupStatus=new ExampaperGroupStatus();
@@ -137,6 +142,8 @@ public class ExampaperQuestionsServiceImpl implements ExampaperQuestionsService 
 				grammarGroupStatus.setAccuracy(f);
 				grammarGroupStatus.setContentStatus(JSON.toJSONString(config).toString());
 				grammarGroupStatus.setKey(rediskey);
+				grammarGroupStatus.setTotalScore(totalScore);
+				grammarGroupStatus.setMemberTotalScore(memberTotalScore);
 				exampaperGroupStatusDao.save(grammarGroupStatus);
 			}
 			t.setPersonTimes(t.getPersonTimes()+1);

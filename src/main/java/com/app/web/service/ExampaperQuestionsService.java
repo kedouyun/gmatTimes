@@ -29,7 +29,7 @@ public interface ExampaperQuestionsService {
 	void deleteBatch(Long[] ids);
 
 	List<Long> queryIDsByExampaperGroupId(Long exampaperGroupId);
-
+	//提前结束考试 查看结果 保存当前用户状态
 	void saveOrUpdateStatus(ExemConfig config, Long exampaperGroupId, Member loginMember, String rediskey);
 
 }

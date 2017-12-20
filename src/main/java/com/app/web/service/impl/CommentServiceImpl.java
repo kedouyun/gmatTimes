@@ -5,14 +5,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 import com.app.web.dao.CommentDao;
+import com.app.web.dao.MessageDao;
 import com.app.web.entity.Comment;
+import com.app.web.entity.Message;
 import com.app.web.service.CommentService;
+import com.app.web.service.MessageService;
 
 @Service("commentService")
 public class CommentServiceImpl implements CommentService {
 
 	@Autowired
 	private CommentDao commentDao;
+	@Autowired
+	MessageService messageService;
 	
 	@Override
 	public Comment queryObject(Long id){
@@ -32,6 +37,8 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public void save(Comment comment){
 		commentDao.save(comment);
+		//保存消息
+		messageService.saveByCommnet(comment);
 	}
 	
 	@Override

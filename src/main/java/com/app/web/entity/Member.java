@@ -13,15 +13,17 @@ public class Member implements Serializable {
 	//
 	private Long id;
 	//昵称
-	private String name;
+	private String username;
 	//密码
 	private String password;
 	//邮箱
 	private String email;
 	//手机号
-	private String mobile;
+	private String phone;
 	//状态 0:禁用，1:正常
 	private Integer status;
+	private Integer sex;//性别  0 :男   1:女
+	private String headImage;//头像
 	//创建时间
 	private Date createDate;
 	//
@@ -31,8 +33,20 @@ public class Member implements Serializable {
 	
 	//考试目标
 	private Date examTarget;
-	
 
+	
+	public String getHeadImage() {
+		return headImage;
+	}
+	public void setHeadImage(String headImage) {
+		this.headImage = headImage;
+	}
+	public Integer getSex() {
+		return sex;
+	}
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
 	public Date getExamDate() {
 		return examDate;
 	}
@@ -57,18 +71,7 @@ public class Member implements Serializable {
 	public Long getId() {
 		return id;
 	}
-	/**
-	 * 设置：昵称
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-	/**
-	 * 获取：昵称
-	 */
-	public String getName() {
-		return name;
-	}
+	
 	/**
 	 * 设置：密码
 	 */
@@ -93,17 +96,18 @@ public class Member implements Serializable {
 	public String getEmail() {
 		return email;
 	}
-	/**
-	 * 设置：手机号
-	 */
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
+	
+	public String getUsername() {
+		return username;
 	}
-	/**
-	 * 获取：手机号
-	 */
-	public String getMobile() {
-		return mobile;
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	/**
 	 * 设置：状态 0:禁用，1:正常

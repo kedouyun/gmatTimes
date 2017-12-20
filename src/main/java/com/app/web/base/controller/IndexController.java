@@ -44,7 +44,4 @@ public class IndexController extends AbstractWebController{
 	public String index(){
 		return "/web/index";
 	}
-	
-
-	
 }

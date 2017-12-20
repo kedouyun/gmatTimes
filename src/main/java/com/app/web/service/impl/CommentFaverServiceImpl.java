@@ -9,9 +9,11 @@ import java.util.Map;
 
 import com.app.web.dao.CommentDao;
 import com.app.web.dao.CommentFaverDao;
+import com.app.web.dao.BbsFaverDao;
 import com.app.web.entity.Comment;
 import com.app.web.entity.CommentFaver;
 import com.app.web.service.CommentFaverService;
+import com.app.web.service.MessageService;
 
 @Service("commentFaverService")
 public class CommentFaverServiceImpl implements CommentFaverService {
@@ -20,6 +22,8 @@ public class CommentFaverServiceImpl implements CommentFaverService {
 	private CommentFaverDao commentFaverDao;
 	@Autowired
 	private CommentDao commentDao;
+	@Autowired
+	private MessageService messageService;
 	
 	@Override
 	public CommentFaver queryObject(Long memberId){
@@ -46,6 +50,8 @@ public class CommentFaverServiceImpl implements CommentFaverService {
 			 Comment queryObject = commentDao.queryObject(commentFaver.getCommentId());
 			 queryObject.setFaver(queryObject.getFaver()+1);
 			 commentDao.update(queryObject);
+			 
+			 messageService.saveByCommentFaver(commentFaver,queryObject);
 		}else{
 			 commentFaverDao.delete(commentFaver);
 			 Comment queryObject = commentDao.queryObject(commentFaver.getCommentId());

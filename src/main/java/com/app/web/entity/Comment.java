@@ -32,10 +32,18 @@ public class Comment implements Serializable {
 
 	private List<Comment> commentList;//子评论
 	
-	private String memberName;//vo 用户名
-	private String headImage;//vo 头像
+	private String memberName;//vo 用户名  发表人
+	private String toMemberName;//vo 用户名 回复人
+	private String headImage;//vo 头像  发表人
 	private Integer isFavor;//vo 是否点赞  0 未点  1 已点赞
 	
+	
+	public String getToMemberName() {
+		return toMemberName;
+	}
+	public void setToMemberName(String toMemberName) {
+		this.toMemberName = toMemberName;
+	}
 	public Integer getIsFavor() {
 		return isFavor;
 	}

@@ -28,6 +28,7 @@
 			        <th>类型</th>
 			        <th>状态</th>
 			        <th>数量</th>
+			        <th>排序</th>
 			        <th>操作</th>
 			    </tr>
 			    </thead>
@@ -40,6 +41,7 @@
 			            <td>${grammargroup.grammarTypesName}</td>
 			            <td>${grammargroup.status==1?"上架":"下架"}</td>
 			            <td>${grammargroup.questionsCounNum}</td>
+			            <td>${grammargroup.sort}</td>
 			            <td>	
 							<a href="javascript:;" onclick="show_window('300px','200px','<%=basePath%>/manger/grammargroup/uploadUi.do?id=${grammargroup.id }','编辑')" class="btn btn-success">导入</a>&nbsp;
 							<a href="javascript:;" onclick="show_window('900px','400px','<%=basePath %>/manger/questions/list.do?grammaticalGroupId=${grammargroup.id}','查看')">查看试题</a>&nbsp;

@@ -23,6 +23,7 @@ import com.app.common.utils.RedisUtils;
 import com.app.common.utils.Result;
 import com.app.common.utils.VerifyCodeUtils;
 import com.app.web.base.AbstractWebController;
+import com.app.web.config.AsyncService;
 import com.app.web.entity.Member;
 import com.app.web.service.MemberService;
 import com.app.web.service.impl.MailService;
@@ -44,6 +45,8 @@ public class RegisterController extends AbstractWebController{
 	private MemberService memberService;
 	@Autowired
 	private RedisUtils redisUtils;
+	@Autowired
+	AsyncService asyncService;
 	
 	@RequestMapping("/user/register")
 	public String register(ModelMap model,String error){
@@ -59,18 +62,12 @@ public class RegisterController extends AbstractWebController{
 			return "redirect:/user/register?error=-101";
 		}
 		if(StringUtils.isNotBlank(member.getEmail())){
-					this.sendValidateEmail(member);
+			asyncService.sendValidateEmail(member);
 		}
 		return "/web/regestEmail";
 	}
 	
-	@Async
-	private void sendValidateEmail(Member member){
-	String token = UUID.randomUUID().toString();
-	redisUtils.set(token, member);
-	logger.error("用户注册，准备发送邮件：User:" + JSONObject.toJSONString(member) + ", Token: " + token);
-		mailService.userValidate(member, token);
-	}
+	
 	
 	@RequestMapping("/activation/{token}")
 	public String loginAction(@PathVariable("token")  String token,ModelMap model){
@@ -86,7 +83,7 @@ public class RegisterController extends AbstractWebController{
 	public String register(@RequestParam(required=true) String email,@RequestParam(required=true) String name,@RequestParam(required=true) String password, ModelMap model){
 		
 		Member member = new Member();
-		member.setName(name);
+		member.setUsername(name);
 		member.setPassword(password);
 		member.setEmail(email);
 		member.setStatus(0);

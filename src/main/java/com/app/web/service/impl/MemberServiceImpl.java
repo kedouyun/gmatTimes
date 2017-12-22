@@ -88,5 +88,15 @@ public class MemberServiceImpl implements MemberService {
 		
 		return result;
 	}
+
+	@Override
+	public void updatePractice(Member loginMember) {
+		 memberDao.updatePractice(loginMember);
+	}
+
+	@Override
+	public Member queryLastPracticeDate(String nowDate, Long id) {
+		return memberDao.queryLastPracticeDate(nowDate,id);
+	}
 	
 }

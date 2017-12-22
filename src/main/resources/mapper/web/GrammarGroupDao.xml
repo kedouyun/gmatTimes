@@ -15,7 +15,7 @@
 	</select>
 	<!-- 前端 -->
 	<select id="queryByGrammarTitleId" resultType="com.app.web.entity.GrammarGroup">
-		select gro.*,title.name as grammarTitleName,gro_stat.key "grammarGroupStatus.key",gro_stat.progress "grammarGroupStatus.progress"
+		select gro.*,title.name as grammarTitleName,gro_stat.cache_key "grammarGroupStatus.cacheKey",gro_stat.progress "grammarGroupStatus.progress"
 		,(SELECT count(q.id) from gm_questions q where q.grammatical_group_id=gro.id) as questionsCounNum
 		,gro_stat.wrong wrong,gro_stat.progress progress
 		from gm_grammar_group gro

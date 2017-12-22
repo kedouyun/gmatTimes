@@ -33,4 +33,8 @@ public interface MemberService {
 
 	ExecuteResult<Integer> updatePassword(Member member, String oldpassword, String newpassword, String re_newpassword);
 
+	void updatePractice(Member loginMember);
+
+	Member queryLastPracticeDate(String format, Long memberId);
+
 }

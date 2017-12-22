@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.web.dao.BbsDao;
 import com.app.web.dao.BbsFaverDao;
 import com.app.web.dao.CommentDao;
+import com.app.web.entity.Bbs;
 import com.app.web.entity.BbsFaver;
 import com.app.web.entity.Comment;
 import com.app.web.entity.BbsFaver;
@@ -20,7 +22,7 @@ public class BbsFaverServiceImpl implements BbsFaverService {
 	@Autowired
 	private BbsFaverDao bbsFaverDao;
 	@Autowired
-	private CommentDao commentDao;
+	private BbsDao bbsDao;
 	
 	@Override
 	public BbsFaver queryObject(Long memberId){
@@ -41,17 +43,15 @@ public class BbsFaverServiceImpl implements BbsFaverService {
 	@Override
 	public void save(BbsFaver bbsFaver){
 		BbsFaver exist =bbsFaverDao.queryExist(bbsFaver);
+		Bbs queryObject = bbsDao.queryObject(bbsFaver.getBbsId());
 		if(exist==null){
 			 bbsFaverDao.save(bbsFaver);
-			 
-			 Comment queryObject = commentDao.queryObject(bbsFaver.getCommentId());
 			 queryObject.setFaver(queryObject.getFaver()+1);
-			 commentDao.update(queryObject);
+			 bbsDao.update(queryObject);
 		}else{
 			 bbsFaverDao.delete(bbsFaver);
-			 Comment queryObject = commentDao.queryObject(bbsFaver.getCommentId());
 			 queryObject.setFaver(queryObject.getFaver()-1);
-			 commentDao.update(queryObject);
+			 bbsDao.update(queryObject);
 		}
 	}
 	

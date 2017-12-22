@@ -33,9 +33,17 @@ public class ExampaperGroup implements Serializable {
 	
 	private Integer questionsCounNum;//试题数
 	
-private Integer limitTime;//限制时间踢动提交
+	private Integer limitTime;//限制时间踢动提交
+	
+	private ExampaperGroupStatus exampaperGroupStatus;//vo 
 	
 	
+	public ExampaperGroupStatus getExampaperGroupStatus() {
+		return exampaperGroupStatus;
+	}
+	public void setExampaperGroupStatus(ExampaperGroupStatus exampaperGroupStatus) {
+		this.exampaperGroupStatus = exampaperGroupStatus;
+	}
 	public Integer getSort() {
 		return sort;
 	}

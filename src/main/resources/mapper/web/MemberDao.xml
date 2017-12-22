@@ -29,6 +29,10 @@
 		select * from gm_member where phone = #{phone}
 	</select>
 	
+	<select id="queryLastPracticeDate" resultType="com.app.web.entity.Member">
+		select * from gm_member where last_practice_date = #{nowDate} and id=#{id}
+	</select>
+	
 	<select id="queryList" resultType="com.app.web.entity.Member">
 		select * from gm_member
         <choose>
@@ -85,12 +89,26 @@
 			<if test="status != null">`status` = #{status}, </if>
 			<if test="createDate != null">`create_date` = #{createDate}, </if>
 			<if test="updateDate != null">`update_date` = #{updateDate},</if>
-			<if test="sex != null">`sex` = #{sex}</if>
-			<if test="headImage != null">`head_image` = #{headImage}</if>
+			<if test="sex != null">`sex` = #{sex},</if>
+			<if test="headImage != null">`head_image` = #{headImage},</if>
+			<if test="headImage != null">`head_image` = #{headImage},</if>
+			<if test="examDate != null">`exam_date` = #{examDate},</if>
+			<if test="examTarget != null">`exam_target` = #{examTarget},</if>
 		</set>
 		where id = #{id}
 	</update>
-	
+	<!-- 更新练习题做题数量，练习累计天数  信息 -->
+	<update id="updatePractice" parameterType="com.app.web.entity.Member">
+		update gm_member 
+		<set>
+			<if test="practiceTotal != null"> `practice_total` = #{practiceTotal}, </if>
+			<if test="practiceDay != null"> `practice_day` = #{practiceDay}, </if>
+			<!-- <if test="lastPracticeDate != null"> `last_practice_date` = #{lastPracticeDate}, </if>
+			<if test="lastPracticeDate == null"> `last_practice_date` = now(), </if> -->
+			`last_practice_date` = now()
+		</set>
+		where id = #{id}
+	</update>
 	<delete id="delete">
 		delete from gm_member where id = #{value}
 	</delete>

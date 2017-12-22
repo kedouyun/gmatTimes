@@ -30,11 +30,32 @@ public class Member implements Serializable {
 	private Date updateDate;
 	//考试日期
 	private Date examDate;
+	private Integer practiceTotal;//做题总数
+	private Integer practiceDay;//累计练习天数
+	private Date lastPracticeDate;//最后练习日期
 	
 	//考试目标
-	private Date examTarget;
+	private String examTarget;
 
 	
+	public Date getLastPracticeDate() {
+		return lastPracticeDate;
+	}
+	public void setLastPracticeDate(Date lastPracticeDate) {
+		this.lastPracticeDate = lastPracticeDate;
+	}
+	public Integer getPracticeTotal() {
+		return practiceTotal;
+	}
+	public void setPracticeTotal(Integer practiceTotal) {
+		this.practiceTotal = practiceTotal;
+	}
+	public Integer getPracticeDay() {
+		return practiceDay;
+	}
+	public void setPracticeDay(Integer practiceDay) {
+		this.practiceDay = practiceDay;
+	}
 	public String getHeadImage() {
 		return headImage;
 	}
@@ -53,10 +74,10 @@ public class Member implements Serializable {
 	public void setExamDate(Date examDate) {
 		this.examDate = examDate;
 	}
-	public Date getExamTarget() {
+	public String getExamTarget() {
 		return examTarget;
 	}
-	public void setExamTarget(Date examTarget) {
+	public void setExamTarget(String examTarget) {
 		this.examTarget = examTarget;
 	}
 	/**

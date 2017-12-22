@@ -6,7 +6,7 @@
     <resultMap type="com.app.web.entity.ExampaperGroupStatus" id="exampaperGroupStatusMap">
         <result property="id" column="id"/>
         <result property="contentStatus" column="content_status"/>
-        <result property="key" column="key"/>
+        <result property="cacheKey" column="cache_key"/>
         <result property="createDate" column="create_Date"/>
         <result property="progress" column="progress"/>
         <result property="wrong" column="wrong"/>
@@ -43,7 +43,7 @@
 		(
 			`id`, 
 			`content_status`, 
-			`key`, 
+			`cache_key`, 
 			`create_Date`, 
 			`progress`, 
 			`wrong`, 
@@ -51,13 +51,14 @@
 			`cost_time`, 
 			`accuracy`,
 			`total_score`,
-			`member_total_score`
+			`member_total_score`,
+			`exampaper_group_id`
 		)
 		values
 		(
 			#{id}, 
 			#{contentStatus}, 
-			#{key}, 
+			#{cache_key}, 
 			now(), 
 			#{progress}, 
 			#{wrong}, 
@@ -65,7 +66,8 @@
 			#{costTime}, 
 			#{accuracy},
 			#{totalScore},
-			#{memberTotalScore}
+			#{memberTotalScore},
+			#{exampaperGroupId}
 		)
 	</insert>
 	 
@@ -73,7 +75,7 @@
 		update gm_exampaper_group_status 
 		<set>
 			<if test="contentStatus != null">`content_status` = #{contentStatus}, </if>
-			<if test="key != null">`key` = #{key}, </if>
+			<if test="cacheKey != null">`cache_key` = #{cacheKey}, </if>
 			<if test="createDate != null">`create_Date` = #{createDate}, </if>
 			<if test="progress != null">`progress` = #{progress}, </if>
 			<if test="wrong != null">`wrong` = #{wrong}, </if>
@@ -98,7 +100,7 @@
 	</delete>
 	
 	<select id="queryByUserAndKey" resultType="com.app.web.entity.ExampaperGroupStatus">
-		select * from gm_exampaper_group_status where user_id = #{memberId} and key=#{rediskey}
+		select * from gm_exampaper_group_status where user_id = #{memberId} and cache_key=#{rediskey}
 	</select>
 
 </mapper>

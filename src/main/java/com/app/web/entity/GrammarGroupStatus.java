@@ -26,14 +26,15 @@ public class GrammarGroupStatus implements Serializable {
 	
 	private String contentStatus;//状态
 	
-	private String key;//状态
+	private String cacheKey;//状态
 	
 	
-	public String getKey() {
-		return key;
+	
+	public String getCacheKey() {
+		return cacheKey;
 	}
-	public void setKey(String key) {
-		this.key = key;
+	public void setCacheKey(String cacheKey) {
+		this.cacheKey = cacheKey;
 	}
 	public String getContentStatus() {
 		return contentStatus;

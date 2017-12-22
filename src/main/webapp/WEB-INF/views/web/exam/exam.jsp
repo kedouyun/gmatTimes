@@ -46,18 +46,30 @@
 		                    <div class="pw-single-left g-clearfix">
 		                        <p class="single-tit">${group.name }</p>
 		                        <p class="pract-pnum">练习人数：40131</p>
+		                        
+		                        <span>进度：${group.exampaperGroupStatus.progress==null?"--":group.exampaperGroupStatus.progress}/${group.questionsCounNum}</span>
+						     <span>错题：${group.exampaperGroupStatus.wrong}</span>
+						     <c:if test="${!empty group.exampaperGroupStatus}">
+						     	<c:if test="${group.exampaperGroupStatus.progress<group.questionsCounNum}">
+							     <a href="${baseurl}/gmat/pre/${group.id}">重新开始</a>
+							     <a href="${baseurl}/gmat/practice/result/${group.id}/${group.exampaperGroupStatus.cacheKey}">查看上次结果</a>
+							     <a href="${baseurl}/gmat/pre/practice/${group.id}/${group.exampaperGroupStatus.key}/${group.exampaperGroupStatus.progress}">继续练习</a>
+						     	</c:if>
+						     	<c:if test="${group.exampaperGroupStatus.progress==group.questionsCounNum}">
+							     <a href="${baseurl}/exam/before/${group.id}">重新开始</a>
+							     <a href="${baseurl}/gmat/practice/result/${group.id}/${group.exampaperGroupStatus.cacheKey}">查看上次结果</a>
+						     	</c:if>
+						     </c:if>
 		                    </div>
 		                    <div class="pw-single-right">
 		                        <a href="javascript:;" class="single-pen-btn"></a>
 		                    </div>
-		                    <div class="continue-hover-mod">
-		                        <a class="jx-pract" href=""> </a>
-		                    </div>
+		                     
 		                </div>
 		            </div>
 		        </div>
-	        
 	        </c:forEach>
+	        
 	        <script type="text/javascript">
 	        	$(".js-link-jump").click(function(){
 	        		location.href=$(this).attr("data-link");

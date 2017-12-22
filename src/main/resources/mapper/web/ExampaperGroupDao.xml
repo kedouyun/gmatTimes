@@ -43,6 +43,30 @@
 		</if>
 	</select>
 	
+	<!-- web前端使用 -->
+	<select id="queryWebList" resultType="com.app.web.entity.ExampaperGroup">
+			select gro.*,pager.name exampaperName ,gro_stat.cache_key "exampaperGroupStatus.cacheKey"
+			,gro_stat.progress "exampaperGroupStatus.progress",gro_stat.member_total_score "exampaperGroupStatus.member_total_score"
+					,(SELECT count(q.id) from gm_exampaper_questions q where q.exampaper_group_id=gro.id) as questionsCounNum
+			from gm_exampaper_group gro 
+			left join gm_exampaper pager on pager.id=gro.exampaper_id
+			left join gm_exampaper_group_status gro_stat on gro_stat.exampaper_group_id=gro.id and gro_stat.user_id=#{memberId}
+			<where>
+					and gro.status = 1
+			</where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by gro.${sidx} ${order}
+            </when>
+			<otherwise>
+                order by gro.sort, gro.id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
  	<select id="queryTotal" resultType="int">
 		select count(*) from gm_exampaper_group 
 		<where>

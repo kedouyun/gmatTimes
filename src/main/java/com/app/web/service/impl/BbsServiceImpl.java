@@ -60,5 +60,20 @@ public class BbsServiceImpl implements BbsService {
 	public int queryWebTotal(Map<String, Object> map) {
 		return bbsDao.queryWebTotal(map);
 	}
+
+	@Override
+	public List<Bbs> queryIndexList(Map<String, Object> map) {
+		return bbsDao.queryIndexList(map);
+	}
+
+	@Override
+	public int queryIndexTotal(Map<String, Object> map) {
+		return bbsDao.queryIndexTotal(map);
+	}
+
+	@Override
+	public Bbs queryWebById(Long id, Long memberId) {
+		return bbsDao.queryWebById(id,memberId);
+	}
 	
 }

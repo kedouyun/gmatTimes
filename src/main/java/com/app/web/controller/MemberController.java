@@ -1,23 +1,18 @@
 package com.app.web.controller;
 
-import java.util.UUID;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
 import com.app.common.utils.RedisUtils;
-import com.app.common.utils.Result;
 import com.app.config.login.Login;
 import com.app.web.base.AbstractWebController;
 import com.app.web.config.AsyncService;
@@ -52,6 +47,8 @@ public class MemberController extends AbstractWebController{
 	public String center(@PathVariable("path")String path){
 		return "/web/member/"+path;
 	}
+	
+	//个人中心提交头像，性别保存
 	@Login
 	@PostMapping("/saveUserCent")
 	@ResponseBody
@@ -70,7 +67,28 @@ public class MemberController extends AbstractWebController{
 		}
 		return result;
 	}
-	
+		//用户保存考试日期和分数
+		@Login
+		@PostMapping("/saveUserTarget")
+		@ResponseBody
+		public ExecuteResult<Integer> saveUserTarget(Integer YYYY,Integer MM,Integer DD,String score){
+			ExecuteResult<Integer> result=new ExecuteResult<Integer>();
+			if(null!=YYYY&&null!=MM&&null!=DD&&null!=score){
+				Calendar instance = Calendar.getInstance();
+				instance.set(YYYY, MM-1, DD);
+				
+				Member member = getLoginMember();
+				member.setExamDate(instance.getTime());
+				member.setExamTarget(score);
+				memberService.update(member);
+				result.setCode("0000");
+				result.setErrorMessage("保存成功");
+			}else{
+				result.setCode("2000");
+				result.setErrorMessage("数据有误");
+			}
+			return result;
+		}
 	//更新密码
 	@Login
 	@PostMapping("/password")

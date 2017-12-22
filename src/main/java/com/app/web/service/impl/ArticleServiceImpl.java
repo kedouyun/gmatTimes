@@ -8,7 +8,7 @@ import com.app.web.dao.ArticleDao;
 import com.app.web.entity.Article;
 import com.app.web.service.ArticleService;
 
-@Service("articleService")
+@Service
 public class ArticleServiceImpl implements ArticleService {
 
 	@Autowired
@@ -47,6 +47,11 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public void deleteBatch(Long[] ids){
 		articleDao.deleteBatch(ids);
+	}
+
+	@Override
+	public Article queryWebFirst(String code) {
+		return null;
 	}
 	
 }

@@ -62,8 +62,8 @@ public class ExamController extends AbstractWebController{
 		
 		if(exampaperList!=null&&exampaperList.size()>0){
 			Map<String, Object> params=new HashMap<>();
-			params.put("status", 1);//上线条件
-			List<ExampaperGroup> queryGroupList = exampaperGroupService.queryList(params);
+			params.put("memberId", getMemberId());//上线条件
+			List<ExampaperGroup> queryGroupList = exampaperGroupService.queryWebList(params);
 			model.addAttribute("queryGroupList", queryGroupList);
 		}
 		return "/web/exam/exam";

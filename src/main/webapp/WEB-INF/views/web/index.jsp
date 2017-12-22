@@ -25,7 +25,9 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="item active">
-						<img alt="" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/1600/500/sports/1/default.jpg" />
+						<a href="${baseurl}/activity/${activity.id}">
+							<img alt="" src="${baseurl}${activity.image}" />
+						</a>
 						<div class="carousel-caption">
 							<h4>
 								First Thumbnail label

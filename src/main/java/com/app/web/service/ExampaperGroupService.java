@@ -25,4 +25,6 @@ public interface ExampaperGroupService {
 	
 	void deleteBatch(Long[] ids);
 
+	List<ExampaperGroup> queryWebList(Map<String, Object> params);
+
 }

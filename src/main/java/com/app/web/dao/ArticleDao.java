@@ -6,5 +6,6 @@ import com.app.web.entity.Article;
 
 @Mapper
 public interface ArticleDao extends BaseDao<Article> {
+
 	
 }

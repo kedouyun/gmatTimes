@@ -25,4 +25,6 @@ public interface ArticleService {
 	
 	void deleteBatch(Long[] ids);
 
+	Article queryWebFirst(String code);
+
 }

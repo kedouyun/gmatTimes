@@ -100,18 +100,18 @@ public class QuestionsServiceImpl implements QuestionsService {
 				question.setName(map.get("题目").length() > 10 ? map.get("题目").substring(0, 10) + "..." : map.get("题目"));
 				if (map.get("类型").equals("单选题") || map.get("类型").equals("单项选择题"))
 					question.setQuestionType(1);
-				else if (map.get("类型").equals("多选题") || map.get("类型").equals("多项选择题"))
+				else if (map.get("类型").equals("阅读题") || map.get("类型").equals("阅读理解"))
 					question.setQuestionType(2);
-				else if (map.get("类型").equals("判断题"))
-					question.setQuestionType(3);
-				else if (map.get("类型").equals("填空题"))
-					question.setQuestionType(4);
-				else if (map.get("类型").equals("简答题"))
-					question.setQuestionType(5);
-				else if (map.get("类型").equals("论述题"))
-					question.setQuestionType(6);
-				else if (map.get("类型").equals("分析题"))
-					question.setQuestionType(7);
+//				else if (map.get("类型").equals("判断题"))
+//					question.setQuestionType(3);
+//				else if (map.get("类型").equals("填空题"))
+//					question.setQuestionType(4);
+//				else if (map.get("类型").equals("简答题"))
+//					question.setQuestionType(5);
+//				else if (map.get("类型").equals("论述题"))
+//					question.setQuestionType(6);
+//				else if (map.get("类型").equals("分析题"))
+//					question.setQuestionType(7);
 
 				question.setAnalysis(map.get("解析"));
 				question.setAnswer(map.get("答案"));
@@ -151,7 +151,9 @@ public class QuestionsServiceImpl implements QuestionsService {
 					qc.setChoiceList(choiceList);
 				}
 				qc.setTitle(map.get("题目"));
-				
+				if(question.getQuestionType()==2){
+					qc.setReadingQuestion(map.get("阅读理解问题"));
+				}
 				String content = JSON.toJSONString(qc);
 				
 				question.setContent(content);
@@ -233,7 +235,7 @@ public class QuestionsServiceImpl implements QuestionsService {
 				grammarGroupStatus.setCostTime(overTime);
 				grammarGroupStatus.setAccuracy(f);
 				grammarGroupStatus.setContentStatus(JSON.toJSONString(config).toString());
-				grammarGroupStatus.setKey(rediskey);
+				grammarGroupStatus.setCacheKey(rediskey);
 				grammarGroupStatusDao.update(grammarGroupStatus);
 			}else{
 				GrammarGroupStatus grammarGroupStatus=new GrammarGroupStatus();
@@ -244,7 +246,7 @@ public class QuestionsServiceImpl implements QuestionsService {
 				grammarGroupStatus.setCostTime(overTime);	
 				grammarGroupStatus.setAccuracy(f);
 				grammarGroupStatus.setContentStatus(JSON.toJSONString(config).toString());
-				grammarGroupStatus.setKey(rediskey);
+				grammarGroupStatus.setCacheKey(rediskey);
 				grammarGroupStatusDao.save(grammarGroupStatus);
 			}
 			t.setPersonTimes(t.getPersonTimes()+1);

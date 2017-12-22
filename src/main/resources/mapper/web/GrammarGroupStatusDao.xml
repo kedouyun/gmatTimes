@@ -9,7 +9,7 @@
         <result property="wrong" column="wrong"/>
         <result property="grammarGroupId" column="grammar_group_id"/>
         <result property="userId" column="user_id"/>
-        <result property="key" column="key"/>
+        <result property="cacheKey" column="cache_key"/>
     </resultMap>
 
 	<select id="queryObject" resultType="com.app.web.entity.GrammarGroupStatus">
@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="queryByUserAndKey" resultType="com.app.web.entity.GrammarGroupStatus">
-		select * from gm_grammar_group_status where user_id = #{memberId} and key=#{rediskey}
+		select * from gm_grammar_group_status where user_id = #{memberId} and cache_key=#{rediskey}
 	</select>
 	
 	<select id="queryStatus" resultType="com.app.web.entity.GrammarGroupStatus">
@@ -63,7 +63,7 @@
 			`accuracy`,
 			`cost_time`,
 			`content_status`,
-			`key`,
+			`cache_key`,
 			`create_date`
 		)
 		values
@@ -76,7 +76,7 @@
 			#{accuracy},
 			#{costTime},
 			#{contentStatus},
-			#{key},
+			#{cacheKey},
 			now()
 		)
 	</insert>
@@ -91,7 +91,7 @@
 			<if test="accuracy != null">`accuracy` = #{accuracy}, </if>
 			<if test="costTime != null">`cost_time` = #{costTime},</if>
 			<if test="contentStatus != null">`content_status` = #{contentStatus},</if>
-			<if test="key != null">`key` = #{key}</if>
+			<if test="cacheKey != null">`cache_key` = #{cacheKey}</if>
 		</set>
 		where id = #{id}
 	</update>

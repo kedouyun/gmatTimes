@@ -29,4 +29,10 @@ public interface BbsService {
 
 	int queryWebTotal(Map<String, Object> map);
 
+	List<Bbs> queryIndexList(Map<String, Object> map);
+
+	int queryIndexTotal(Map<String, Object> map);
+
+	Bbs queryWebById(Long id, Long memberId);
+
 }

@@ -17,6 +17,9 @@ public class Bbs implements Serializable {
 	private Long memberId;
 	//回复人
 	private Long toMemberId;
+	//评论标题
+	private String title;
+	
 	//评论内容
 	private String content;
 	//状态（0:删除,1:在线）
@@ -35,7 +38,21 @@ public class Bbs implements Serializable {
 	private String memberName;//vo 用户名
 	private String headImage;//vo 头像
 	private Integer isFavor;//vo 是否点赞  0 未点  1 已点赞
+	private String toMemberName;//vo 用户名 回复人
 	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getToMemberName() {
+		return toMemberName;
+	}
+	public void setToMemberName(String toMemberName) {
+		this.toMemberName = toMemberName;
+	}
 	public Integer getIsFavor() {
 		return isFavor;
 	}

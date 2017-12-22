@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.app.web.dao.bbs">
+<mapper namespace="com.app.web.dao.BbsDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.app.web.entity.Bbs" id="bbsMap">
@@ -44,10 +44,21 @@
 	</select>
 	 
   <resultMap id="bbsResult" type="com.app.web.entity.Bbs" extends="bbsMap">
-    
-    <collection property="bbsList" javaType="ArrayList" column="id" ofType="com.app.web.entity.Bbs" select="findPinglunById">
-   </collection>
+    <collection property="commentList" javaType="ArrayList" column="id" ofType="com.app.web.entity.Bbs" select="findPinglunById">
+   	</collection>
   </resultMap>
+  
+	<select id="queryWebById" resultType="com.app.web.entity.Bbs">
+		select comm.*,
+		mem.username memberName,mem.head_image headImage,
+		(CASE WHEN (SELECT bbs_id FROM gm_bbs_faver 
+		WHERE bbs_id=comm.id and member_id=#{memberId}) 
+		IS NULL THEN 0 ELSE 1 END) isFavor 
+		from gm_bbs comm
+		LEFT JOIN gm_member mem on mem.id=comm.member_id
+		where  comm.status=1 and comm.id=#{id}
+		
+	</select>
   
 	 <select id="queryWebList"  resultMap="bbsResult" >
 		select comm.*,
@@ -57,7 +68,7 @@
 		IS NULL THEN 0 ELSE 1 END) isFavor 
 		from gm_bbs comm
 		LEFT JOIN gm_member mem on mem.id=comm.member_id
-		where  comm.status=1 and comm.parent_id is null
+		where  comm.status=1 and comm.parent_id=#{parentId}
 
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
@@ -86,6 +97,32 @@
 		where  comm.status=1 and comm.to_member_id is null
 	</select>
 	
+	<!-- 顶级查询 -->
+	<select id="queryIndexList" resultType="com.app.web.entity.Bbs" >
+		select comm.*
+		from gm_bbs comm
+		LEFT JOIN gm_member mem on mem.id=comm.member_id
+		where  comm.status=1 and comm.parent_id is null
+
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by comm.${sidx} ${order}
+            </when>
+			<otherwise>
+                order by comm.id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	<!-- 顶级查询 -->
+	<select id="queryIndexTotal" resultType="int">
+		select count(*)  from gm_bbs comm
+		LEFT JOIN gm_member mem on mem.id=comm.member_id
+		where  comm.status=1 and comm.to_member_id is null
+	</select>
+	
 	
 	<insert id="save" parameterType="com.app.web.entity.Bbs" keyProperty="id" useGeneratedKeys="true">
 		insert into gm_bbs
@@ -96,9 +133,9 @@
 			`content`, 
 			`status`, 
 			`faver`, 
-			`question_id`, 
 			`parent_id`, 
-			`create_date`
+			`create_date`,
+			`title`
 		)
 		values
 		(
@@ -108,9 +145,9 @@
 			#{content}, 
 			1,
 			0,
-			#{questionId}, 
 			#{parentId}, 
-			now()
+			now(),
+			#{title}
 		)
 	</insert>
 	 

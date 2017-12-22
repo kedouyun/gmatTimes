@@ -19,3 +19,8 @@ $("#Register .btn-b").click(function(){
 		  alert(r.errorMessage);
   },function(r){});
 });
+$("#reg_testdate .btn-b").click(function(){
+	submit("reg_testdate",function(r){
+		alert(r.errorMessage);
+	},function(r){});
+});

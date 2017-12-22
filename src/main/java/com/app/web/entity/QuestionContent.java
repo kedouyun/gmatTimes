@@ -6,9 +6,18 @@ import java.util.LinkedHashMap;
 public class QuestionContent {
 
 	private String title;
+	private String readingQuestion;//阅读理解 问题
 	private String titleImg = "";
 	private LinkedHashMap<String, String> choiceList;
 	private LinkedHashMap<String, String> choiceImgList;
+
+	public String getReadingQuestion() {
+		return readingQuestion;
+	}
+
+	public void setReadingQuestion(String readingQuestion) {
+		this.readingQuestion = readingQuestion;
+	}
 
 	public String getTitle() {
 		return title;

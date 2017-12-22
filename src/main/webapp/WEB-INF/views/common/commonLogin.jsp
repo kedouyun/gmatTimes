@@ -55,7 +55,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active">
-					 <a href="#">首页</a>
+					 <a href="${baseurl}/home">首页</a>
 				</li>
 				<li>
 					 <a href="${baseurl}/learn/guide/all">备考指南</a>
@@ -67,7 +67,7 @@
 					 <a href="${baseurl}/exam">模考</a>
 				</li>
 				<li>
-					 <a href="#">换库机经</a>
+					 <a href="${baseurl}/through/list">换库机经</a>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

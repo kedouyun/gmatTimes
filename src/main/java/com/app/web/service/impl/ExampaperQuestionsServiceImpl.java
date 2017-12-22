@@ -124,11 +124,11 @@ public class ExampaperQuestionsServiceImpl implements ExampaperQuestionsService 
 				grammarGroupStatus.setUserId(member.getId());
 				grammarGroupStatus.setProgress(progress);
 				grammarGroupStatus.setWrong(wrong);
-//				grammarGroupStatus.setExampaperGroupId(exampaperGroupId);
+				grammarGroupStatus.setExampaperGroupId(exampaperGroupId);
 				grammarGroupStatus.setCostTime(overTime);
 				grammarGroupStatus.setAccuracy(f);
 				grammarGroupStatus.setContentStatus(JSON.toJSONString(config).toString());
-				grammarGroupStatus.setKey(rediskey);
+				grammarGroupStatus.setCacheKey(rediskey);
 				grammarGroupStatus.setTotalScore(totalScore);
 				grammarGroupStatus.setMemberTotalScore(memberTotalScore);
 				exampaperGroupStatusDao.update(grammarGroupStatus);
@@ -137,11 +137,11 @@ public class ExampaperQuestionsServiceImpl implements ExampaperQuestionsService 
 				grammarGroupStatus.setUserId(member.getId());
 				grammarGroupStatus.setProgress(progress);
 				grammarGroupStatus.setWrong(wrong);
-//				grammarGroupStatus.setGrammarGroupId(grammarGroupId);
+				grammarGroupStatus.setExampaperGroupId(exampaperGroupId);
 				grammarGroupStatus.setCostTime(overTime);	
 				grammarGroupStatus.setAccuracy(f);
 				grammarGroupStatus.setContentStatus(JSON.toJSONString(config).toString());
-				grammarGroupStatus.setKey(rediskey);
+				grammarGroupStatus.setCacheKey(rediskey);
 				grammarGroupStatus.setTotalScore(totalScore);
 				grammarGroupStatus.setMemberTotalScore(memberTotalScore);
 				exampaperGroupStatusDao.save(grammarGroupStatus);

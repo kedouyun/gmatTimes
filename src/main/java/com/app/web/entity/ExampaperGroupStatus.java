@@ -15,7 +15,7 @@ public class ExampaperGroupStatus implements Serializable {
 	//状态
 	private String contentStatus;
 	//redis
-	private String key;
+	private String cacheKey;
 	//
 	private Date createDate;
 	//
@@ -33,6 +33,15 @@ public class ExampaperGroupStatus implements Serializable {
 	
 	private Integer memberTotalScore;//总分数
 	
+	private Long exampaperGroupId;//考试组id
+	
+	
+	public Long getExampaperGroupId() {
+		return exampaperGroupId;
+	}
+	public void setExampaperGroupId(Long exampaperGroupId) {
+		this.exampaperGroupId = exampaperGroupId;
+	}
 	public Integer getMemberTotalScore() {
 		return memberTotalScore;
 	}
@@ -69,17 +78,12 @@ public class ExampaperGroupStatus implements Serializable {
 	public String getContentStatus() {
 		return contentStatus;
 	}
-	/**
-	 * 设置：redis
-	 */
-	public void setKey(String key) {
-		this.key = key;
+	
+	public String getCacheKey() {
+		return cacheKey;
 	}
-	/**
-	 * 获取：redis
-	 */
-	public String getKey() {
-		return key;
+	public void setCacheKey(String cacheKey) {
+		this.cacheKey = cacheKey;
 	}
 	/**
 	 * 设置：

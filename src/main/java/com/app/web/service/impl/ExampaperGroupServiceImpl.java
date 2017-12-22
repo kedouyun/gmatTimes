@@ -48,5 +48,10 @@ public class ExampaperGroupServiceImpl implements ExampaperGroupService {
 	public void deleteBatch(Long[] ids){
 		exampaperGroupDao.deleteBatch(ids);
 	}
+
+	@Override
+	public List<ExampaperGroup> queryWebList(Map<String, Object> params) {
+		return exampaperGroupDao.queryWebList(params);
+	}
 	
 }

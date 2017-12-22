@@ -16,9 +16,18 @@
 	 <div id="detailInfoLayer" >
 		<form class="form-horizontal">
 			<div class="form-group">
-				<label class="col-sm-2 control-label">描述：</label>
+				<label class="col-sm-2 control-label">试题：</label>
 				<p class="form-control-static">${parse.title}</p>
 			</div>
+			
+			<c:if test="${!empty parse.readingQuestion}">
+			
+				<div class="form-group">
+					<label class="col-sm-2 control-label">问题：</label>
+					<p class="form-control-static">${parse.readingQuestion}</p>
+				</div>
+			
+			</c:if>
 			
 			<div>
 				<c:forEach items="${parse.choiceList}" var="list">

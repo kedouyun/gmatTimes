@@ -13,7 +13,7 @@ public class BbsFaver implements Serializable {
 	//
 	private Long memberId;
 	//
-	private Long commentId;
+	private Long bbsId;
 
 	/**
 	 * 设置：
@@ -27,17 +27,12 @@ public class BbsFaver implements Serializable {
 	public Long getMemberId() {
 		return memberId;
 	}
-	/**
-	 * 设置：
-	 */
-	public void setCommentId(Long commentId) {
-		this.commentId = commentId;
+	public Long getBbsId() {
+		return bbsId;
 	}
-	/**
-	 * 获取：
-	 */
-	public Long getCommentId() {
-		return commentId;
+	public void setBbsId(Long bbsId) {
+		this.bbsId = bbsId;
 	}
+	
 
 }

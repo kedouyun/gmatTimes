@@ -1,5 +1,9 @@
 package com.app.web.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +30,7 @@ import com.app.web.entity.GrammarGroup;
 import com.app.web.entity.GrammarGroupStatus;
 import com.app.web.entity.GrammarTitle;
 import com.app.web.entity.GrammarTypes;
+import com.app.web.entity.Member;
 import com.app.web.entity.Questions;
 import com.app.web.service.GrammarGroupService;
 import com.app.web.service.GrammarGroupStatusService;
@@ -244,8 +249,24 @@ public class PracticeController extends AbstractWebController{
 		answer.put(config.getQuestionIds().get(arrId), vo);
 		config.setAnswer(answer);
 		
+		Member loginMember = getLoginMember();
+		if(loginMember!=null){
+			loginMember.setPracticeTotal(loginMember.getPracticeTotal()+1);
+			if(loginMember.getLastPracticeDate()!=null){
+				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+				Member member=memberService.queryLastPracticeDate(dateFormat.format(new Date()),getMemberId());
+				if(member==null){
+//					loginMember.setLastPracticeDate(new Date());
+					loginMember.setPracticeDay(loginMember.getPracticeDay()+1);
+				}else{
+				}
+			}
+			memberService.updatePractice(loginMember);//更新做题数量
+		}
+		
+		
 		if(config.getQuestionIds().size()<=(arrId+1)){
-			questionsService.saveOrUpdateStatus(config,grammarGroupId,getLoginMember(),rediskey);
+			questionsService.saveOrUpdateStatus(config,grammarGroupId,loginMember,rediskey);
 			redisUtils.set(rediskey, config);
 			return "redirect:/gmat/practice/result/"+grammarGroupId+"/"+rediskey;
 		}

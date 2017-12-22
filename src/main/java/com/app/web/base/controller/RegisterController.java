@@ -55,6 +55,13 @@ public class RegisterController extends AbstractWebController{
 		return "/web/member/register";
 	}
 	
+	@RequestMapping("/user/phone")
+	public String phone(ModelMap model,String error){
+		model.addAttribute("flag", "register");
+		model.addAttribute("error", error);
+		return "/web/member/register";
+	}
+	
 	@PostMapping("/user/registerAction")
 	public String registerAction(Member member,@RequestParam(required=true) String code,ModelMap model){
 		String verCode=(String) session.getAttribute("verCode");

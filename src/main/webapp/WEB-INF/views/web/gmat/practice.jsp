@@ -111,8 +111,8 @@
 						     <c:if test="${!empty grammarGroup.progress}">
 						     	<c:if test="${grammarGroup.progress<grammarGroup.questionsCounNum}">
 							     <a href="${baseurl}/gmat/pre/${grammarGroup.id}">重新开始</a>
-							     <a href="${baseurl}/gmat/practice/result/${grammarGroup.id}/${grammarGroup.grammarGroupStatus.key}">查看上次结果</a>
-							     <a href="${baseurl}/gmat/pre/practice/${grammarGroup.id}/${grammarGroup.grammarGroupStatus.key}/${grammarGroup.grammarGroupStatus.progress}">继续练习</a>
+							     <a href="${baseurl}/gmat/practice/result/${grammarGroup.id}/${grammarGroup.grammarGroupStatus.cacheKey}">查看上次结果</a>
+							     <a href="${baseurl}/gmat/pre/practice/${grammarGroup.id}/${grammarGroup.grammarGroupStatus.cacheKey}/${grammarGroup.grammarGroupStatus.progress}">继续练习</a>
 						     	</c:if>
 						     </c:if>
 						</div>
